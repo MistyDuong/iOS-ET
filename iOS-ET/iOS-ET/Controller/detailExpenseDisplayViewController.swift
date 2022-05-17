@@ -9,7 +9,13 @@ import Foundation
 import UIKit
 
 
-class detailExpenseDisplayController: UIViewController {
+class detailExpenseDisplayViewController: UIViewController {
+    
+    @IBOutlet weak var detailTable: UITableView!
+    
+    var amount: Double = 0.0
+    var acountName:String = " "
+    //var Date:Date=
     
     
     override func viewDidLoad() {

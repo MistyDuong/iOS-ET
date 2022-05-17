@@ -11,6 +11,26 @@ import UIKit
 
 class expenseDisplayViewController: UIViewController, UITextFieldDelegate{
     
+    @IBOutlet weak var rentLabel: UILabel!
+    @IBOutlet weak var groceriesLabel: UILabel!
+    @IBOutlet weak var transportLabel: UILabel!
+    @IBOutlet weak var utilitiesLabel: UILabel!
+    @IBOutlet weak var entertainmentLabel: UILabel!
+    @IBOutlet weak var othersLabel: UIButton!
+    
+    @IBAction func rentButton(_ sender: UIButton) {
+    }
+    @IBAction func groceriesButton(_ sender: UIButton) {
+    }
+    @IBAction func transportButton(_ sender: UIButton) {
+    }
+    @IBAction func utilitiesButton(_ sender: Any) {
+    }
+    @IBAction func entertainmentButton(_ sender: Any) {
+    }
+    @IBAction func othersButton(_ sender: Any) {
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

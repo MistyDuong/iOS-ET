@@ -742,30 +742,45 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Rent"/>
+                                <connections>
+                                    <action selector="rentButton:" destination="NK0-xE-Gu5" eventType="touchUpInside" id="gLy-aQ-wNW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZZ-Gl-PAf">
                                 <rect key="frame" x="43" y="294" width="119" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Groceries"/>
+                                <connections>
+                                    <action selector="groceriesButton:" destination="NK0-xE-Gu5" eventType="touchUpInside" id="ZU5-1K-zWv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3d-Gg-gYO">
                                 <rect key="frame" x="43" y="358" width="119" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Transport"/>
+                                <connections>
+                                    <action selector="transportButton:" destination="NK0-xE-Gu5" eventType="touchUpInside" id="GUh-LF-9t3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEc-JK-DKj">
                                 <rect key="frame" x="43" y="425" width="119" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Utilities"/>
+                                <connections>
+                                    <action selector="utilitiesButton:" destination="NK0-xE-Gu5" eventType="touchUpInside" id="wB8-Vd-4MX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vxe-vK-fSh">
                                 <rect key="frame" x="43" y="491" width="119" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Entertainment"/>
+                                <connections>
+                                    <action selector="entertainmentButton:" destination="NK0-xE-Gu5" eventType="touchUpInside" id="2dz-jl-5zA"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSS-sP-szo">
                                 <rect key="frame" x="272" y="236" width="42" height="21"/>
@@ -807,6 +822,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Others"/>
+                                <connections>
+                                    <action selector="othersButton:" destination="NK0-xE-Gu5" eventType="touchUpInside" id="fOc-xX-D0g"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9C-sO-QjV">
                                 <rect key="frame" x="272" y="568" width="42" height="21"/>
@@ -820,15 +838,23 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="3Fe-FV-kgD"/>
+                    <connections>
+                        <outlet property="entertainmentLabel" destination="vdg-Gf-O3O" id="Cwr-gr-mpR"/>
+                        <outlet property="groceriesLabel" destination="5VO-co-hMS" id="75b-x1-8Il"/>
+                        <outlet property="othersLabel" destination="66O-hh-Drc" id="Z10-Sg-pNy"/>
+                        <outlet property="rentLabel" destination="CSS-sP-szo" id="73m-5u-D8h"/>
+                        <outlet property="transportLabel" destination="hOK-IJ-3mq" id="JLv-kS-nVF"/>
+                        <outlet property="utilitiesLabel" destination="VkH-cx-lH1" id="Djj-tb-1Ft"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Yg-8T-B5s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1836.2318840579712" y="848.4375"/>
         </scene>
-        <!--Detail Expense Display Controller-->
+        <!--Detail Expense Display View Controller-->
         <scene sceneID="Y8E-1t-axF">
             <objects>
-                <viewController id="XsW-lo-9wE" customClass="detailExpenseDisplayController" customModule="iOS_ET" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XsW-lo-9wE" customClass="detailExpenseDisplayViewController" customModule="iOS_ET" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i9Q-Zw-zBU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -853,6 +879,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="jNT-gG-gHR"/>
+                    <connections>
+                        <outlet property="detailTable" destination="4HQ-ne-ecq" id="l6E-6q-asR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FIr-0p-xel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
