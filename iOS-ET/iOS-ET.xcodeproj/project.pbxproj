@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EBE19DF32833D3D100FE30F0 /* expenseDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE19DF22833D3D100FE30F0 /* expenseDisplayViewController.swift */; };
+		EBE19DF52833D46900FE30F0 /* detailExpenseDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE19DF42833D46900FE30F0 /* detailExpenseDisplayViewController.swift */; };
 		F34FEFF1282FFBFB0043C821 /* dashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34FEFF0282FFBFB0043C821 /* dashboardViewController.swift */; };
 		F39F20C32830D6AA001C887A /* createViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F20C22830D6AA001C887A /* createViewController.swift */; };
 		F39F20C52830D6FC001C887A /* updateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F20C42830D6FC001C887A /* updateViewController.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EBE19DF22833D3D100FE30F0 /* expenseDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expenseDisplayViewController.swift; sourceTree = "<group>"; };
+		EBE19DF42833D46900FE30F0 /* detailExpenseDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailExpenseDisplayViewController.swift; sourceTree = "<group>"; };
 		F34FEFF0282FFBFB0043C821 /* dashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dashboardViewController.swift; sourceTree = "<group>"; };
 		F39F20C22830D6AA001C887A /* createViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createViewController.swift; sourceTree = "<group>"; };
 		F39F20C42830D6FC001C887A /* updateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 				F39F20C22830D6AA001C887A /* createViewController.swift */,
 				F39F20C42830D6FC001C887A /* updateViewController.swift */,
 				F39F20C62830D797001C887A /* displayViewController.swift */,
+				EBE19DF22833D3D100FE30F0 /* expenseDisplayViewController.swift */,
+				EBE19DF42833D46900FE30F0 /* detailExpenseDisplayViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -178,10 +184,12 @@
 				F3EAA00E282F86F400659C88 /* ViewController.swift in Sources */,
 				F39F20C72830D797001C887A /* displayViewController.swift in Sources */,
 				F3EAA00A282F86F400659C88 /* AppDelegate.swift in Sources */,
+				EBE19DF52833D46900FE30F0 /* detailExpenseDisplayViewController.swift in Sources */,
 				F3E9F333282FEE9600361414 /* profileViewController.swift in Sources */,
 				F3EAA014282F86F400659C88 /* iOS_ET.xcdatamodeld in Sources */,
 				F39F20C52830D6FC001C887A /* updateViewController.swift in Sources */,
 				F34FEFF1282FFBFB0043C821 /* dashboardViewController.swift in Sources */,
+				EBE19DF32833D3D100FE30F0 /* expenseDisplayViewController.swift in Sources */,
 				F39F20C32830D6AA001C887A /* createViewController.swift in Sources */,
 				F3E9F331282FECBE00361414 /* registerViewController.swift in Sources */,
 				F3EAA00C282F86F400659C88 /* SceneDelegate.swift in Sources */,
