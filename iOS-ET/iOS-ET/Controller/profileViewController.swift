@@ -9,7 +9,9 @@ import Foundation
 import UIKit
 
 class profileViewController: UIViewController {
-
+    @IBOutlet weak var limitLabel: UILabel!
+    @IBOutlet weak var pwdLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -17,24 +19,42 @@ class profileViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true;
     }
     
-    
-    @IBAction func editButton(_ sender: Any) {
-        // after validations are complete; perform segue programmatically
-        // move to the dashboard when "sign in" button is clicked
-        self.performSegue(withIdentifier: "goToUpdateProfile", sender: nil);
+    @IBAction func limitButton(_ sender: Any) {
+        // create alert
+        let alert = UIAlertController(title: "Update Spending Limit", message: "New spending Limit: ", preferredStyle: .alert)
+        alert.addTextField();
+        
+        let textfield = alert.textFields![0];
+        textfield.text = limitLabel.text;
+        
+        let saveButton = UIAlertAction(title: "Save", style: .default) { (action) in
+            // action
+        }
+        
+        // add button
+        alert.addAction(saveButton);
+        
+        // show alert
+        self.present(alert, animated: true, completion: nil);
     }
     
-    // function to pass data to the next screen
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // check whether it is the right segue
-        if (segue.identifier == "goToUpdateProfile") {
-            // find the destination viewController - gameViewController
-            if let destinationVC = segue.destination as?
-                dashboardViewController {
-                
-                
-            }
+    @IBAction func pwdButton(_ sender: Any) {
+        let alert = UIAlertController(title: "Update password", message: "New password: ", preferredStyle: .alert)
+        alert.addTextField();
+        
+        let textfield = alert.textFields![0];
+        textfield.text = pwdLabel.text;
+        
+        // configure the handler
+        let saveButton = UIAlertAction(title: "Save", style: .default) { (action) in
+            // action
         }
+        
+        // add button
+        alert.addAction(saveButton);
+        
+        // show alert
+        self.present(alert, animated: true, completion: nil);
     }
 
 }

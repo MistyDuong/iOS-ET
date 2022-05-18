@@ -11,7 +11,6 @@
 		EBE19DF52833D46900FE30F0 /* displayCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE19DF42833D46900FE30F0 /* displayCategoryViewController.swift */; };
 		F34FEFF1282FFBFB0043C821 /* dashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34FEFF0282FFBFB0043C821 /* dashboardViewController.swift */; };
 		F39F20C32830D6AA001C887A /* createViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F20C22830D6AA001C887A /* createViewController.swift */; };
-		F39F20C52830D6FC001C887A /* updateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F20C42830D6FC001C887A /* updateViewController.swift */; };
 		F3E9F331282FECBE00361414 /* registerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E9F330282FECBE00361414 /* registerViewController.swift */; };
 		F3E9F333282FEE9600361414 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E9F332282FEE9600361414 /* profileViewController.swift */; };
 		F3EAA00A282F86F400659C88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EAA009282F86F400659C88 /* AppDelegate.swift */; };
@@ -28,7 +27,6 @@
 		EBE19DF42833D46900FE30F0 /* displayCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = displayCategoryViewController.swift; sourceTree = "<group>"; };
 		F34FEFF0282FFBFB0043C821 /* dashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dashboardViewController.swift; sourceTree = "<group>"; };
 		F39F20C22830D6AA001C887A /* createViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createViewController.swift; sourceTree = "<group>"; };
-		F39F20C42830D6FC001C887A /* updateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateViewController.swift; sourceTree = "<group>"; };
 		F3E9F330282FECBE00361414 /* registerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
 		F3E9F332282FEE9600361414 /* profileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
 		F3EAA006282F86F400659C88 /* iOS-ET.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-ET.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,7 +98,6 @@
 				F3E9F332282FEE9600361414 /* profileViewController.swift */,
 				F34FEFF0282FFBFB0043C821 /* dashboardViewController.swift */,
 				F39F20C22830D6AA001C887A /* createViewController.swift */,
-				F39F20C42830D6FC001C887A /* updateViewController.swift */,
 				EBE19DF22833D3D100FE30F0 /* selectCategoryViewController.swift */,
 				EBE19DF42833D46900FE30F0 /* displayCategoryViewController.swift */,
 			);
@@ -183,7 +180,6 @@
 				EBE19DF52833D46900FE30F0 /* displayCategoryViewController.swift in Sources */,
 				F3E9F333282FEE9600361414 /* profileViewController.swift in Sources */,
 				F3EAA014282F86F400659C88 /* iOS_ET.xcdatamodeld in Sources */,
-				F39F20C52830D6FC001C887A /* updateViewController.swift in Sources */,
 				F34FEFF1282FFBFB0043C821 /* dashboardViewController.swift in Sources */,
 				EBE19DF32833D3D100FE30F0 /* selectCategoryViewController.swift in Sources */,
 				F39F20C32830D6AA001C887A /* createViewController.swift in Sources */,
