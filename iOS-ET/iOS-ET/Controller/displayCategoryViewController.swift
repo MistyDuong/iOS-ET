@@ -9,17 +9,16 @@ import Foundation
 import UIKit
 
 
-class detailExpenseDisplayViewController: UIViewController {
-    
+class displayCategoryViewController: UIViewController {
     @IBOutlet weak var detailTable: UITableView!
     
     var amount: Double = 0.0
     var acountName:String = " "
-    //var Date:Date=
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // hide the nav bar
+        self.navigationController?.isNavigationBarHidden = true;
     }
 }

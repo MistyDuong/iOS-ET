@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-class expenseDisplayViewController: UIViewController, UITextFieldDelegate{
+class selectCategoryViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var rentLabel: UILabel!
     @IBOutlet weak var groceriesLabel: UILabel!
@@ -39,7 +39,7 @@ class expenseDisplayViewController: UIViewController, UITextFieldDelegate{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier=="START"{
-        let VC=segue.destination as! detailExpenseDisplayController
+        let VC=segue.destination as! displayCategoryViewController
         /*
         VC.currentPlayerName=String(playerName.text!)
         VC.remainingTime=Int(timeSlider.value)

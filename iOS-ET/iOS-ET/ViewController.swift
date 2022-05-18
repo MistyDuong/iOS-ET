@@ -17,6 +17,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.navigationController?.isNavigationBarHidden = true;
+        
+        // database
+//        var container:
     }
     
     @IBAction func loginButton(_ sender: Any) {
@@ -47,7 +50,7 @@ class ViewController: UIViewController {
     
     // validate func to check login details
     func validateLogin(username: String, pwd: String) -> Bool {
-        if username != "hello" && pwd != "world" {
+        if username != "hello" || pwd != "world" {
             return false;
         }
         return true;
