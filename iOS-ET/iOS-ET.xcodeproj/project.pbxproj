@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EBBCE28D2835018000533736 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBCE2892835018000533736 /* User+CoreDataClass.swift */; };
+		EBBCE28E2835018000533736 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBCE28A2835018000533736 /* User+CoreDataProperties.swift */; };
+		EBBCE28F2835018000533736 /* Balance+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBCE28B2835018000533736 /* Balance+CoreDataClass.swift */; };
+		EBBCE2902835018000533736 /* Balance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBCE28C2835018000533736 /* Balance+CoreDataProperties.swift */; };
 		EBE19DF32833D3D100FE30F0 /* selectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE19DF22833D3D100FE30F0 /* selectCategoryViewController.swift */; };
 		EBE19DF52833D46900FE30F0 /* displayCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE19DF42833D46900FE30F0 /* displayCategoryViewController.swift */; };
 		F34FEFF1282FFBFB0043C821 /* dashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34FEFF0282FFBFB0043C821 /* dashboardViewController.swift */; };
@@ -23,6 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EBBCE2892835018000533736 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EBBCE28A2835018000533736 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EBBCE28B2835018000533736 /* Balance+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Balance+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EBBCE28C2835018000533736 /* Balance+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Balance+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EBE19DF22833D3D100FE30F0 /* selectCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectCategoryViewController.swift; sourceTree = "<group>"; };
 		EBE19DF42833D46900FE30F0 /* displayCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = displayCategoryViewController.swift; sourceTree = "<group>"; };
 		F34FEFF0282FFBFB0043C821 /* dashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dashboardViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +59,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EBBCE291283501EE00533736 /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				EBBCE28A2835018000533736 /* User+CoreDataProperties.swift */,
+				EBBCE28C2835018000533736 /* Balance+CoreDataProperties.swift */,
+			);
+			path = Properties;
+			sourceTree = "<group>";
+		};
 		F3EA9FFD282F86F400659C88 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +87,7 @@
 		F3EAA008282F86F400659C88 /* iOS-ET */ = {
 			isa = PBXGroup;
 			children = (
+				EBBCE291283501EE00533736 /* Properties */,
 				F3EAA021282F870800659C88 /* Controller */,
 				F3EAA020282F870400659C88 /* Model */,
 				F3EAA009282F86F400659C88 /* AppDelegate.swift */,
@@ -87,6 +105,8 @@
 		F3EAA020282F870400659C88 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EBBCE28B2835018000533736 /* Balance+CoreDataClass.swift */,
+				EBBCE2892835018000533736 /* User+CoreDataClass.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -177,12 +197,16 @@
 			files = (
 				F3EAA00E282F86F400659C88 /* ViewController.swift in Sources */,
 				F3EAA00A282F86F400659C88 /* AppDelegate.swift in Sources */,
+				EBBCE28E2835018000533736 /* User+CoreDataProperties.swift in Sources */,
 				EBE19DF52833D46900FE30F0 /* displayCategoryViewController.swift in Sources */,
+				EBBCE28F2835018000533736 /* Balance+CoreDataClass.swift in Sources */,
 				F3E9F333282FEE9600361414 /* profileViewController.swift in Sources */,
 				F3EAA014282F86F400659C88 /* iOS_ET.xcdatamodeld in Sources */,
 				F34FEFF1282FFBFB0043C821 /* dashboardViewController.swift in Sources */,
+				EBBCE2902835018000533736 /* Balance+CoreDataProperties.swift in Sources */,
 				EBE19DF32833D3D100FE30F0 /* selectCategoryViewController.swift in Sources */,
 				F39F20C32830D6AA001C887A /* createViewController.swift in Sources */,
+				EBBCE28D2835018000533736 /* User+CoreDataClass.swift in Sources */,
 				F3E9F331282FECBE00361414 /* registerViewController.swift in Sources */,
 				F3EAA00C282F86F400659C88 /* SceneDelegate.swift in Sources */,
 			);
