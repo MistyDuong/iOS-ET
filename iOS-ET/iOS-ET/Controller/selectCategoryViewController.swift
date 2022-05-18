@@ -10,11 +10,16 @@ import UIKit
 
 
 class selectCategoryViewController: UIViewController, UITextFieldDelegate{
+    
+    
+    @IBOutlet weak var allLabel: UILabel!
     @IBOutlet weak var rentLabel: UILabel!
     @IBOutlet weak var groceriesLabel: UILabel!
     @IBOutlet weak var transportLabel: UILabel!
     @IBOutlet weak var utilitiesLabel: UILabel!
     @IBOutlet weak var entertainmentLabel: UILabel!
+    @IBOutlet weak var othersLabel: UILabel!
+    
     
     var selectedCategory: String = "name";
 

@@ -917,6 +917,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="3Fe-FV-kgD"/>
                     <connections>
+                        <outlet property="allLabel" destination="v9C-sO-QjV" id="gAd-4k-NML"/>
+                        <outlet property="entertainmentLabel" destination="DKz-p9-PTc" id="hFE-0m-Xvh"/>
+                        <outlet property="groceriesLabel" destination="jsN-41-TdC" id="5ZQ-fg-kH2"/>
+                        <outlet property="othersLabel" destination="3mz-cY-3kb" id="W2Z-9y-pMy"/>
+                        <outlet property="rentLabel" destination="XPZ-cH-ppQ" id="n6B-OQ-Vgf"/>
+                        <outlet property="transportLabel" destination="gXP-K8-KQ8" id="HD1-o1-NsH"/>
+                        <outlet property="utilitiesLabel" destination="eu5-8d-wIx" id="BSr-wA-N57"/>
                         <segue destination="XsW-lo-9wE" kind="showDetail" identifier="goTodisplayCategory" id="48O-6B-caG"/>
                     </connections>
                 </viewController>
@@ -1012,7 +1019,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zlj-8T-E5o"/>
+        <segue reference="YFE-vk-JDr"/>
         <segue reference="w6R-So-8id"/>
     </inferredMetricsTieBreakers>
     <resources>
