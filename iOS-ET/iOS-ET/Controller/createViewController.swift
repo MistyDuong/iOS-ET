@@ -16,5 +16,4 @@ class createViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true;
     }
 
-
 }
