@@ -26,3 +26,37 @@ class displayCategoryViewController: UIViewController {
         titleLable.text = categoryTitle;
     }
 }
+
+extension displayCategoryViewController:UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+}
+
+extension displayCategoryViewController:UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // initiate row if there are not any
+        /*if(sortedHighScore.count == 0){
+            return(1)
+        }*/
+        return 1
+    }
+
+        
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell=tableView.dequeueReusableCell(withIdentifier: "highScoreCell", for: indexPath)
+        //let score=highScore[indexPath.row]
+        // retrieves existed data and put in cell
+        /*if sortedHighScore.count != 0{
+            cell.textLabel?.text = "\(sortedHighScore[indexPath.row].key)"
+            cell.detailTextLabel?.text = "Score: \(sortedHighScore[indexPath.row].value)"
+
+        } else{
+            // no data scenerio
+            cell.textLabel?.text = "NO HIGH SCORE YET!"
+            cell.detailTextLabel?.text = ""
+        }*/
+        return cell
+    }
+}
