@@ -14,9 +14,10 @@ class displayCategoryViewController: UIViewController {
     
     var amount: Double = 0.0
     var acountName: String = " "
-    
+    var selectedCategory: String = "";
     var categoryTitle: String = "Hello";
-    
+    var balance:[Balance]?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,13 +40,13 @@ extension displayCategoryViewController:UITableViewDataSource{
         /*if(sortedHighScore.count == 0){
             return(1)
         }*/
-        return 1
+        return balance?.count ?? 1
     }
 
         
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell=tableView.dequeueReusableCell(withIdentifier: "highScoreCell", for: indexPath)
+        let cell=tableView.dequeueReusableCell(withIdentifier: "displayExpense", for: indexPath)
         //let score=highScore[indexPath.row]
         // retrieves existed data and put in cell
         /*if sortedHighScore.count != 0{
@@ -57,6 +58,9 @@ extension displayCategoryViewController:UITableViewDataSource{
             cell.textLabel?.text = "NO HIGH SCORE YET!"
             cell.detailTextLabel?.text = ""
         }*/
+        let detail = self.balance![indexPath.row]
+        cell.textLabel?.text=detail.type
+        cell.detailTextLabel?.text=String(detail.amount)
         return cell
     }
 }
