@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 
 class selectCategoryViewController: UIViewController, UITextFieldDelegate{
@@ -20,8 +21,7 @@ class selectCategoryViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var entertainmentLabel: UILabel!
     @IBOutlet weak var othersLabel: UILabel!
     var balance:[Balance]?
-    //let context=(UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext;
-    let balance1 = Balance()
+    let context=(UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext;
 
     var selectedCategory: String = "";
     //var name:String = ""
@@ -32,14 +32,17 @@ class selectCategoryViewController: UIViewController, UITextFieldDelegate{
     var utilitiesAmount:Double=0
     var entertainmentAmount:Double=0
     var othersAmount:Double=0
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        fetchBalance()
+        calculateAmount()
     }
     
     func fetchBalance(){
         do{
-            self.balance = try balance1.context.fetch(Balance.fetchRequest())
+            let request = Balance.fetchRequest() as NSFetchRequest<Balance>
+            self.balance = try context.fetch(request)
             
         }catch{
             

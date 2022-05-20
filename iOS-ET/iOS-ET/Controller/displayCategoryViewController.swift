@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class displayCategoryViewController: UIViewController {
     @IBOutlet weak var detailTable: UITableView!
@@ -17,14 +18,67 @@ class displayCategoryViewController: UIViewController {
     var selectedCategory: String = "";
     var categoryTitle: String = "Hello";
     var balance:[Balance]?
+    let context=(UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext;
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchBalance()
         
         // hide the nav bar
         self.navigationController?.isNavigationBarHidden = true;
         
         titleLable.text = categoryTitle;
+    }
+    
+    func fetchBalance(){
+        do{
+            let request = Balance.fetchRequest() as NSFetchRequest<Balance>
+            
+            if(selectedCategory == "All"){
+                let pred = NSPredicate(format: "category == 'All'")
+                request.predicate = pred
+            }
+            
+            else if(selectedCategory == "Rent"){
+                let pred = NSPredicate(format: "category == 'Rent'")
+                request.predicate = pred
+            }
+            
+            else if(selectedCategory == "Groceries"){
+                let pred = NSPredicate(format: "category == 'Groceries'")
+                request.predicate = pred
+            }
+            
+            else if(selectedCategory == "Transport"){
+                let pred = NSPredicate(format: "category == 'Transport'")
+                request.predicate = pred
+            }
+            
+            else if(selectedCategory == "Utilities"){
+                let pred = NSPredicate(format: "category == 'Utilities'")
+                request.predicate = pred
+            }
+            
+            else if(selectedCategory == "Entertainment"){
+                let pred = NSPredicate(format: "category == 'Entertainment'")
+                request.predicate = pred
+            }
+
+            else if(selectedCategory == "Others"){
+                let pred = NSPredicate(format: "category == 'Others'")
+                request.predicate = pred
+            }
+            
+            let sort = NSSortDescriptor(key: "date", ascending: true)
+            request.sortDescriptors = [sort]
+            self.balance = try context.fetch(request)
+            
+        }catch{
+            
+        }
+        DispatchQueue.main.async {
+            
+        }
     }
 }
 
