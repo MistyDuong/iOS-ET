@@ -117,4 +117,25 @@ extension displayCategoryViewController:UITableViewDataSource{
         cell.detailTextLabel?.text=String(detail.amount)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+            
+            let balanceToRemove = self.balance![indexPath.row]
+            
+            self.context.delete(balanceToRemove)
+            
+            do {
+                try self.context.save()
+            }
+            catch {
+                
+            }
+            
+            self.fetchBalance()
+        }
+        
+        return UISwipeActionsConfiguration(actions: [action])
+    }
 }
