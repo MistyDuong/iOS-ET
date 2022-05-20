@@ -34,12 +34,12 @@ class displayCategoryViewController: UIViewController {
         do{
             let request = Balance.fetchRequest() as NSFetchRequest<Balance>
             
-            if(selectedCategory == "All"){
+            /*if(selectedCategory == "All"){
                 let pred = NSPredicate(format: "category == 'All'")
                 request.predicate = pred
-            }
+            }*/
             
-            else if(selectedCategory == "Rent"){
+            if(selectedCategory == "Rent"){
                 let pred = NSPredicate(format: "category == 'Rent'")
                 request.predicate = pred
             }
@@ -113,7 +113,7 @@ extension displayCategoryViewController:UITableViewDataSource{
             cell.detailTextLabel?.text = ""
         }*/
         let detail = self.balance![indexPath.row]
-        cell.textLabel?.text=detail.type
+        cell.textLabel?.text=detail.title
         cell.detailTextLabel?.text=String(detail.amount)
         return cell
     }
