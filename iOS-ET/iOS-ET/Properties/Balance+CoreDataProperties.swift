@@ -16,6 +16,7 @@ extension Balance {
         return NSFetchRequest<Balance>(entityName: "Balance")
     }
 
+    @NSManaged public var title: String?
     @NSManaged public var amount: Double
     @NSManaged public var category: String?
     @NSManaged public var date: Date?
