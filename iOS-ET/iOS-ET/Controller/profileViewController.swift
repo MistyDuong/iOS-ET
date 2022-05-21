@@ -26,11 +26,10 @@ class profileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // hide navbar and retieve data of specific user from core data and display to screen
+        
+        // hide navbar and retieve and display data to screen
         self.navigationController?.isNavigationBarHidden = true;
         self.fetchUser();
-        
-//        print("profile - \(username)");
     }
     
     func fetchUser() {
@@ -123,7 +122,7 @@ class profileViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // check whether it is the right segue
         if (segue.identifier == "backToDash") {
-            // find the destination viewController - gameViewController
+            // find the destination dashboardViewController and pass relevant data over
             if let destinationVC = segue.destination as?
                 dashboardViewController {
                 destinationVC.username = self.username;

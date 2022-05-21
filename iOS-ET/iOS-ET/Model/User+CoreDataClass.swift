@@ -23,11 +23,11 @@ public class User: NSManagedObject {
         self.monthIncome = monthlyIncome;
         self.spendingLimit = spendingLimit;
         
-        // save the data
+        // save data
         saveUser();
     }
     
-    // save data func
+    // save data into database func
     func saveUser() {
         do {
             try self.context.save();
@@ -38,10 +38,9 @@ public class User: NSManagedObject {
     
     // update func
     func updateUser(username: String, data: String, type: String) {
-        let user = username;
-        let predicate = NSPredicate(format: "userName CONTAINS '\(user)' ");
+        let predicateUser = NSPredicate(format: "userName CONTAINS '\(username)' ");
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User");
-        fetchRequest.predicate = predicate;
+        fetchRequest.predicate = predicateUser;
 
         do {
             let fetchResult = try context.fetch(fetchRequest) as! [NSManagedObject]
@@ -66,15 +65,15 @@ public class User: NSManagedObject {
     func fetchUser(_ userName: String) -> NSFetchRequest<User> {
         let request = User.fetchRequest() as NSFetchRequest<User>
         
-        // set the filtering
-        let predicate = NSPredicate(format: "userName CONTAINS '\(userName)' ")
-        request.predicate = predicate
-        
+        // set the filtering and return the filtered data
+        let predicateUser = NSPredicate(format: "userName CONTAINS '\(userName)' ")
+        request.predicate = predicateUser;
         return request;
     }
     
     // validate user login details
-    func validateUser(username: String, pwd: String) -> Bool {
+    // return "true" if login details matches else return "false"
+    func validateUser(_ username: String,_ pwd: String) -> Bool {
         do {
             let request = fetchUser(username);
             let result = try context.fetch(request);
@@ -93,6 +92,7 @@ public class User: NSManagedObject {
     }
     
     // validate existing username in database
+    // return "true" if there is existing name else return "false"
     func validateExisting(_ username: String) -> Bool {
         do {
             let request = fetchUser(username);

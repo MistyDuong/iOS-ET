@@ -27,20 +27,24 @@ class displayCategoryViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true;
         titleLable.text = categoryTitle;
         self.fetchBalance();
-        
-//        print("display - \(username)")
     }
     
+    // fetch data from the database and display to table view
     func fetchBalance() {
         do {
             let request = Balance.fetchRequest() as NSFetchRequest<Balance>
             balances = try context.fetch(request);
+            
+            // filter based on category
+            // action
+            
+            // re-load the data to the table
             DispatchQueue.main.async {
                 self.detailTable.reloadData();
             }
         } catch {
-                print("unable to retrieve data")
-            }
+            print("unable to retrieve data")
+        }
     }
 }
 
@@ -63,7 +67,7 @@ extension displayCategoryViewController: UITableViewDelegate, UITableViewDataSou
         cell.textLabel?.text = String(balance.amount);
         cell.detailTextLabel?.text = dateFormatter.string(from: balance.date!);
         
-        // set background color based on type of data
+        // set background color based on income or expenses
         if balance.type == "Income" {
             cell.contentView.backgroundColor = UIColor.systemTeal;
         } else {
@@ -78,7 +82,7 @@ extension displayCategoryViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
-        // create swipe action
+        // create the swipe action
         let action = UIContextualAction(style: .destructive, title: "Delete") {
             (action, view, completionHandler) in
             

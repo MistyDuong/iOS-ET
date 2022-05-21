@@ -48,7 +48,7 @@ public class Balance: NSManagedObject {
 //        return request;
 //    }
     
-    // retrieve user type (income.expense) from core data database
+    // retrieve user type (income/expense) from core data database
     func fetchBalanceType(_ userName: String,_ type: String) -> NSFetchRequest<Balance> {
         let request = Balance.fetchRequest() as NSFetchRequest<Balance>
         

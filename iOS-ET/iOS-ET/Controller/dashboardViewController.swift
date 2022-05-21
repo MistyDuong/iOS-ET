@@ -24,8 +24,6 @@ class dashboardViewController: UIViewController {
         // hide navbar
         self.navigationController?.isNavigationBarHidden = true;
         self.fetchBalance();
-        
-//        print("dashboard - \(username)")
     }
     
     func fetchBalance() {
@@ -125,14 +123,14 @@ class dashboardViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // check whether it is the right segue
         if (segue.identifier == "goToProfile") {
-            // find the destination viewController - gameViewController
+            // find the destination profileViewController and pass relevant data over
             if let destinationVC = segue.destination as?
                 profileViewController {
                 
                 destinationVC.username = username;
             }
         } else if (segue.identifier == "goToCategory") {
-            // find the destination viewController - gameViewController
+            // find the destination selectCategoryViewController and pass relevant data over
             if let destinationVC = segue.destination as?
                 selectCategoryViewController {
                 destinationVC.username = username;

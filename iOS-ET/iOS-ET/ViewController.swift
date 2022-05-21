@@ -18,8 +18,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+
         // hide nav bar
         self.navigationController?.isNavigationBarHidden = true;
     }
@@ -60,7 +59,7 @@ class ViewController: UIViewController {
     func validateLogin(username: String, pwd: String) -> Bool {
         let user = User(context: self.context);
         
-        if user.validateUser(username: userNameTF.text!, pwd: pwdTF.text!) == true {
+        if user.validateUser(userNameTF.text!, pwdTF.text!) == true {
             return true;
         }
         return false;
@@ -70,11 +69,10 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // check whether it is the right segue
         if (segue.identifier == "loginToDashboard") {
-            // find the destination viewController - gameViewController
+            // find the destination dashboardViewController and pass relevant data over
             if let destinationVC = segue.destination as?
                 dashboardViewController {
-                
-                destinationVC.username = userNameTF.text ?? "sample";
+                destinationVC.username = userNameTF.text ?? "hello";
             }
         }
     }

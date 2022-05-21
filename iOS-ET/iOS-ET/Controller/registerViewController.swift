@@ -26,17 +26,17 @@ class registerViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true;
     }
     
-    func fetchUser() {
-        // retrieve the data from core data
-        do {
-            users = try context.fetch(User.fetchRequest());
-        } catch {
-            print("unable to fetch user")
-        }
-    }
+    // retrieve the data from core data
+//    func fetchUser() {
+//        do {
+//            users = try context.fetch(User.fetchRequest());
+//        } catch {
+//            print("unable to fetch user")
+//        }
+//    }
     
     @IBAction func createButton(_ sender: Any) {
-        // perform validation if it is empty, existing name and correct data type input
+        // perform vatious validations including if textfields are empty, existing input username and correct data type input
         if ((validateTF(firstNameTF.text ?? "") == false) || (validateTF(lastNameTF.text ?? "") == false) || (validateTF(userNameTF.text ?? "") == false) || (validateTF(pwdTF.text ?? "") == false) || (validateTF(incomeTF.text ?? "") == false) || (validateTF(expenseTF.text ?? "") == false)) {
             feedBackTF.text = "provide all the required details";
         } else if (validateExistingName(userNameTF.text ?? "") == false) {
@@ -67,6 +67,8 @@ class registerViewController: UIViewController {
     }
     
     // validate func to check existing username
+    // when validateExisting() return true means that there is existing username
+    // therefore, this validateExistingName() will return "false" if there is existing name in database else return "true" to indicate it passed the validation
     func validateExistingName(_ username: String) -> Bool {
         let user = User(context: self.context);
         if user.validateExisting(userNameTF.text!) == true {
@@ -84,13 +86,12 @@ class registerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // check whether it is the right segue
         if (segue.identifier == "registerToDashboard") {
-            // find the destination viewController - gameViewController
+            // find the destination dashboardViewController and pass relevant data over
             if let destinationVC = segue.destination as?
                 dashboardViewController {
                 destinationVC.username = userNameTF.text!;
             }
         }
     }
-
 
 }
