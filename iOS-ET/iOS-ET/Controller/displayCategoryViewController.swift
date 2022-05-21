@@ -17,9 +17,6 @@ class displayCategoryViewController: UIViewController {
     var username: String = "hello"
     var categoryTitle: String = "Hello";
     
-//    var amount: Double = 0.0
-//    var acountName: String = " "
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,19 +29,15 @@ class displayCategoryViewController: UIViewController {
     // fetch data from the database and display to table view
     func display() {
         do {
-            /*let request = Balance.fetchRequest() as NSFetchRequest<Balance>
-            balances = try context.fetch(request);*/
-            let balance = Balance(context: self.context);
-            let request = balance.fetchBalanceCategory(username, categoryTitle)
+            // called the fetchBalanceCategory() to filter data based on category and load the filtered data into the table
+            let fetchBalance = Balance(context: self.context);
+            let request = fetchBalance.fetchBalanceCategory(self.username, categoryTitle)
             
+            let sort = NSSortDescriptor(key: "date", ascending: false);
+            request.sortDescriptors = [sort];
             
-            // filter based on category
-            let sort = NSSortDescriptor(key: "date", ascending: false)
-            request.sortDescriptors = [sort]
-            
-            //action
             balances = try context.fetch(request);
-
+            
             // re-load the data to the table
             DispatchQueue.main.async {
                 self.detailTable.reloadData();
@@ -106,7 +99,7 @@ extension displayCategoryViewController: UITableViewDelegate, UITableViewDataSou
                 
             }
             
-            // refresh the data
+            // re-fetch the data
             self.display();
         }
 

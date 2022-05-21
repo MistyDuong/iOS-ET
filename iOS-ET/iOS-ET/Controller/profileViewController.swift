@@ -23,12 +23,18 @@ class profileViewController: UIViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext;
     var username: String = "hello";
+    var currentIncome: String = "0";
+    var currentExpense: String = "0";
+    var currentBalance: String = "0";
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // hide navbar and retieve and display data to screen
         self.navigationController?.isNavigationBarHidden = true;
+        totalIncomeLabel.text = currentIncome;
+        totalExpenseLabel.text = currentExpense;
+        totalBalanceLabel.text = currentBalance;
         self.fetchUser();
     }
     

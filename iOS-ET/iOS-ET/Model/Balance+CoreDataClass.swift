@@ -31,33 +31,57 @@ public class Balance: NSManagedObject {
         }
     }
     
-    // fetch all transaction of specific user
-    func fetchBalance(_ userName: String) -> NSFetchRequest<Balance>{
-            let request = Balance.fetchRequest() as NSFetchRequest<Balance>
-            let pred = NSPredicate(format: "userName CONTAINS '\(userName)'")
-            request.predicate = pred
-            return request
-    }
-    
-    // fetch balance of specific user balance
+    // fetch balance of specific user based on category
     func fetchBalanceCategory(_ userName: String, _ category: String) -> NSFetchRequest<Balance> {
-          let request = Balance.fetchRequest() as NSFetchRequest<Balance>
+        let request = Balance.fetchRequest() as NSFetchRequest<Balance>
 
         // set the filtering
         let predicateUser = NSPredicate(format: "userName CONTAINS '\(userName)' ")
-        var predicateCategory = NSPredicate(format: "category CONTAINS '\(category)' ")
-        if(category == "Others"){
-            predicateCategory = NSPredicate(format: "NOT category IN %@",["Rent","Groceries","Transport","Entertainment"])
-        }
         request.predicate = predicateUser;
 
+        // if request if not "all" category; filter the category then return the request
+        // else return the request without filtering the category
         if category != "All" {
+            let predicateCategory = NSPredicate(format: "category CONTAINS '\(category)' ")
             request.predicate = predicateCategory;
+            return request;
         }
+        
         return request;
     }
     
-    // retrieve user type (income/expense) from core data database
+    // calculate func that determines the total balance (income - expense) based on the filtered data and selected category
+    func calculateAmount(_ username: String, _ filteredCategory: [Balance], _ selectedCategory: String) -> Double {
+        var result: Double = 0;
+        
+        // for-loop to calculate the all the income of the selected category
+        for data in filteredCategory as [NSManagedObject] {
+            let user = data.value(forKey: "userName") as? String;
+            let categories = data.value(forKey: "category") as? String;
+            let type = data.value(forKey: "type") as? String;
+            
+            if user == username && categories == selectedCategory && type == "Income" {
+                let toCalculateIncome = data.value(forKey: "amount") as! Double;
+                result += toCalculateIncome;
+            }
+        }
+        
+        // for-loop to calculate the all the expense of the selected category
+        for data in filteredCategory as [NSManagedObject] {
+            let user = data.value(forKey: "userName") as? String;
+            let categories = data.value(forKey: "category") as? String;
+            let type = data.value(forKey: "type") as? String;
+            
+            if user == username && categories == selectedCategory && type == "Expense" {
+                let toCalculateExpense = data.value(forKey: "amount") as! Double;
+                result -= toCalculateExpense;
+            }
+        }
+
+        return result;
+    }
+    
+    // retrieve balance of user based on type (income/expense)
     func fetchBalanceType(_ userName: String,_ type: String) -> NSFetchRequest<Balance> {
         let request = Balance.fetchRequest() as NSFetchRequest<Balance>
         

@@ -126,14 +126,17 @@ class dashboardViewController: UIViewController {
             // find the destination profileViewController and pass relevant data over
             if let destinationVC = segue.destination as?
                 profileViewController {
-                
                 destinationVC.username = username;
+                destinationVC.currentIncome = totalIncomeLabel.text ?? "0";
+                destinationVC.currentExpense = totalExpenseLabel.text ?? "0";
+                destinationVC.currentBalance = totalBalanceLabel.text ?? "0";
             }
         } else if (segue.identifier == "goToCategory") {
             // find the destination selectCategoryViewController and pass relevant data over
             if let destinationVC = segue.destination as?
                 selectCategoryViewController {
                 destinationVC.username = username;
+                destinationVC.allAmount = totalBalanceLabel.text ?? "0";
             }
         }
     }

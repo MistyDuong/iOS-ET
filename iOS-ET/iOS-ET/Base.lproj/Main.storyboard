@@ -955,6 +955,14 @@
                                     <action selector="backButton:" destination="NK0-xE-Gu5" eventType="touchUpInside" id="6iu-rs-zVN"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X35-KS-Mgd">
+                                <rect key="frame" x="170" y="747" width="74" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Refresh"/>
+                                <connections>
+                                    <action selector="refreshButton:" destination="NK0-xE-Gu5" eventType="touchUpInside" id="Tl1-4Q-GHn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TcX-RV-Hwz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -965,6 +973,7 @@
                             <constraint firstItem="TcX-RV-Hwz" firstAttribute="trailing" secondItem="4lT-FD-5H1" secondAttribute="trailing" constant="20" id="BVD-Ym-HnH"/>
                             <constraint firstItem="4lT-FD-5H1" firstAttribute="top" secondItem="7uk-gh-JXF" secondAttribute="bottom" constant="90" id="DGU-eS-gaf"/>
                             <constraint firstItem="pjO-sp-uz0" firstAttribute="leading" secondItem="TcX-RV-Hwz" secondAttribute="leading" constant="10" id="DvY-tY-2hG"/>
+                            <constraint firstItem="X35-KS-Mgd" firstAttribute="centerX" secondItem="wMv-23-BZN" secondAttribute="centerX" id="QMQ-0u-gLz"/>
                             <constraint firstItem="4lT-FD-5H1" firstAttribute="leading" secondItem="TcX-RV-Hwz" secondAttribute="leading" constant="20" id="RQM-K8-TcL"/>
                             <constraint firstItem="7uk-gh-JXF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pjO-sp-uz0" secondAttribute="trailing" constant="8" symbolic="YES" id="Vr6-Uo-oO1"/>
                             <constraint firstItem="IhB-ds-0FU" firstAttribute="leading" secondItem="wMv-23-BZN" secondAttribute="leading" id="aAF-Ga-QuM"/>
@@ -972,6 +981,7 @@
                             <constraint firstItem="7uk-gh-JXF" firstAttribute="top" secondItem="TcX-RV-Hwz" secondAttribute="top" constant="50" id="iTs-7F-QM4"/>
                             <constraint firstItem="4lT-FD-5H1" firstAttribute="centerX" secondItem="wMv-23-BZN" secondAttribute="centerX" id="nYu-GZ-sSm"/>
                             <constraint firstAttribute="bottom" secondItem="IhB-ds-0FU" secondAttribute="bottom" id="qNg-bX-uRb"/>
+                            <constraint firstItem="TcX-RV-Hwz" firstAttribute="bottom" secondItem="X35-KS-Mgd" secondAttribute="bottom" constant="30" id="qUO-lb-agK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3Fe-FV-kgD"/>
