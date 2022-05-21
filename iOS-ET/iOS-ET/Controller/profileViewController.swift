@@ -26,7 +26,6 @@ class profileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // hide navbar and retieve data of specific user from core data and display to screen
         self.navigationController?.isNavigationBarHidden = true;
         self.fetchUser();

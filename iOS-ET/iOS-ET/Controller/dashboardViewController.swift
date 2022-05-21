@@ -21,12 +21,11 @@ class dashboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // hide nav var
+        // hide navbar
         self.navigationController?.isNavigationBarHidden = true;
+        self.fetchBalance();
         
 //        print("dashboard - \(username)")
-        self.fetchBalance();
     }
     
     func fetchBalance() {
@@ -36,26 +35,35 @@ class dashboardViewController: UIViewController {
             let requestExpense = fetchBalance.fetchBalanceType(username, "Expense");
             let incomeResult = try context.fetch(requestIncome);
             let expenseResult = try context.fetch(requestExpense);
-            
             var totalIncome: Double = 20;
             var totalExpense: Double = 10;
 
             // perform calculation for income
             for data in incomeResult as [NSManagedObject] {
-                // convert the data for calculation
-                // then display the result onto screen
-                let toCalculateIncome = data.value(forKey: "amount") as! Double;
-                totalIncome += toCalculateIncome;
-                totalIncomeLabel.text = String(totalIncome);
+                let user = data.value(forKey: "userName") as? String;
+                let type = data.value(forKey: "type") as? String;
+                
+                if user == self.username && type == "Income" {
+                    // convert the data for calculation
+                    // then display the result onto screen
+                    let toCalculateIncome = data.value(forKey: "amount") as! Double;
+                    totalIncome += toCalculateIncome;
+                    totalIncomeLabel.text = String(totalIncome);
+                }
             }
             
             // perform calculation for expense
             for data in expenseResult as [NSManagedObject] {
-                // convert the data for calculation
-                // then display the result onto screen
-                let toCalculateExpense = data.value(forKey: "amount") as! Double;
-                totalExpense += toCalculateExpense;
-                totalExpenseLabel.text = String(totalExpense);
+                let user = data.value(forKey: "userName") as? String;
+                let type = data.value(forKey: "type") as? String;
+                
+                if user == self.username && type == "Expense" {
+                    // convert the data for calculation
+                    // then display the result onto screen
+                    let toCalculateExpense = data.value(forKey: "amount") as! Double;
+                    totalExpense += toCalculateExpense;
+                    totalExpenseLabel.text = String(totalExpense);
+                }
             }
             
             // perform calculation for balance = income - expense
@@ -86,7 +94,7 @@ class dashboardViewController: UIViewController {
             let newInvoice = Balance(context: self.context);
             let amount = (amountTF.text! as NSString).floatValue;
             
-            newInvoice.createInvoice(username: self.username, type: typeTF.text ?? "", amount: Double(amount), category: categoryTF.text ?? "Others")
+            newInvoice.createInvoice(username: self.username, type: typeTF.text ?? "", amount: Double(amount), category: categoryTF.text ?? "");
             
             // re-fetch the data by reload the UI
             self.viewDidLoad();

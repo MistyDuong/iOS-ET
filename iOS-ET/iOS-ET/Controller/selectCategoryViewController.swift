@@ -33,11 +33,10 @@ class selectCategoryViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad();
         
-        // hide nav bar
+        // hide navbar
         self.navigationController?.isNavigationBarHidden = true;
         
 //        print("select category - \(username)");
-        
     }
     
 //    func calculateAmount(){
