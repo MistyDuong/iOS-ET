@@ -21,19 +21,17 @@ class profileViewController: UIViewController {
     @IBOutlet weak var totalIncomeLabel: UILabel!
     @IBOutlet weak var monthlyIncome: UILabel!
     
-    @IBOutlet weak var contentStackView: UIStackView!
-    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext;
     var username: String = "hello";
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         // hide navbar and retieve data of specific user from core data and display to screen
         self.navigationController?.isNavigationBarHidden = true;
         self.fetchUser();
         
-        print("profile - \(username)");
+//        print("profile - \(username)");
     }
     
     func fetchUser() {
@@ -48,7 +46,7 @@ class profileViewController: UIViewController {
                 
                 firstNameLabel.text = data.value(forKey: "firstName") as? String;
                 lastNameLabel.text = data.value(forKey: "lastName") as? String;
-                monthlyIncome.text = montlyIncome.stringValue
+                monthlyIncome.text = montlyIncome.stringValue;
                 limitLabel.text = spendingLimit.stringValue;
                 userNameLabel.text = data.value(forKey: "userName") as? String;
                 pwdLabel.text = data.value(forKey: "pwd") as? String;

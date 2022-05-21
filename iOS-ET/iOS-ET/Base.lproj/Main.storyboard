@@ -327,6 +327,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="Qed-70-dJj"/>
                     <connections>
+                        <outlet property="totalBalanceLabel" destination="s0V-hE-ogD" id="I1L-5g-Zsj"/>
+                        <outlet property="totalExpenseLabel" destination="9wS-ex-95T" id="tFQ-84-yFr"/>
+                        <outlet property="totalIncomeLabel" destination="5FU-MR-b3I" id="6Tx-RA-Wfd"/>
                         <segue destination="RIv-6z-8Yy" kind="show" identifier="goToProfile" id="3Pp-PA-UEW"/>
                         <segue destination="NK0-xE-Gu5" kind="show" identifier="goToCategory" id="nVF-ym-Xe9"/>
                     </connections>
@@ -784,7 +787,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="qQO-c8-kTY"/>
                     <connections>
-                        <outlet property="contentStackView" destination="uXS-SK-I8W" id="OM9-aN-q1a"/>
                         <outlet property="firstNameLabel" destination="igQ-jJ-wxa" id="Zkv-wo-n6x"/>
                         <outlet property="lastNameLabel" destination="Dxq-f2-j1L" id="w7p-S5-Wng"/>
                         <outlet property="limitLabel" destination="L2t-jr-bQc" id="CQg-Uk-58H"/>
@@ -1070,7 +1072,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fKj-oR-wE1"/>
+        <segue reference="95n-78-zGt"/>
         <segue reference="w6R-So-8id"/>
     </inferredMetricsTieBreakers>
     <resources>

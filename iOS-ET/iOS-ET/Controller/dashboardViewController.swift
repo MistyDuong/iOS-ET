@@ -7,26 +7,67 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 var balances:[Balance]?
 
 class dashboardViewController: UIViewController {
-    var username: String = "sample";
+    @IBOutlet weak var totalBalanceLabel: UILabel!
+    @IBOutlet weak var totalIncomeLabel: UILabel!
+    @IBOutlet weak var totalExpenseLabel: UILabel!
+    
+    var username: String = "hello";
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext;
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
+        // hide nav var
         self.navigationController?.isNavigationBarHidden = true;
         
-        print("dashboard - \(username)")
+//        print("dashboard - \(username)")
+        self.fetchBalance();
+    }
+    
+    func fetchBalance() {
+        do {
+            let fetchBalance = Balance(context: self.context);
+            let requestIncome = fetchBalance.fetchBalanceType(username, "Income");
+            let requestExpense = fetchBalance.fetchBalanceType(username, "Expense");
+            let incomeResult = try context.fetch(requestIncome);
+            let expenseResult = try context.fetch(requestExpense);
+            
+            var totalIncome: Double = 20;
+            var totalExpense: Double = 10;
+
+            // perform calculation for income
+            for data in incomeResult as [NSManagedObject] {
+                // convert the data for calculation
+                // then display the result onto screen
+                let toCalculateIncome = data.value(forKey: "amount") as! Double;
+                totalIncome += toCalculateIncome;
+                totalIncomeLabel.text = String(totalIncome);
+            }
+            
+            // perform calculation for expense
+            for data in expenseResult as [NSManagedObject] {
+                // convert the data for calculation
+                // then display the result onto screen
+                let toCalculateExpense = data.value(forKey: "amount") as! Double;
+                totalExpense += toCalculateExpense;
+                totalExpenseLabel.text = String(totalExpense);
+            }
+            
+            // perform calculation for balance = income - expense
+            totalBalanceLabel.text = String(totalIncome - totalExpense);
+        } catch {
+            print("unable to retrieve data")
+        }
     }
     
     @IBAction func createButton(_ sender: Any) {
         // create alert
         let alert = UIAlertController(title: "New Invoice", message: "Enter all required information", preferredStyle: .alert)
-//        alert
         alert.addTextField();
         alert.addTextField();
         alert.addTextField();
@@ -45,12 +86,15 @@ class dashboardViewController: UIViewController {
             let newInvoice = Balance(context: self.context);
             let amount = (amountTF.text! as NSString).floatValue;
             
-            newInvoice.createInvoice(username: self.username, type: typeTF.text ?? "", amount: Double(amount), category: categoryTF.text ?? "")
+            newInvoice.createInvoice(username: self.username, type: typeTF.text ?? "", amount: Double(amount), category: categoryTF.text ?? "Others")
+            
+            // re-fetch the data by reload the UI
+            self.viewDidLoad();
         }
         
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel);
         
-        // add button
+        // add buttons
         alert.addAction(addButton);
         alert.addAction(cancelButton);
         

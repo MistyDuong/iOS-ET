@@ -28,7 +28,7 @@ class displayCategoryViewController: UIViewController {
         titleLable.text = categoryTitle;
         fetchBalance();
         
-        print("display - \(username)")
+//        print("display - \(username)")
     }
     
     func fetchBalance() {
@@ -39,8 +39,8 @@ class displayCategoryViewController: UIViewController {
                 self.detailTable.reloadData();
             }
         } catch {
-                print("unable to retrieve data")
-            }
+            print("unable to retrieve data")
+        }
     }
 }
 
@@ -55,7 +55,7 @@ extension displayCategoryViewController: UITableViewDelegate, UITableViewDataSou
         let cell = tableView.dequeueReusableCell(withIdentifier: "displayExpense", for: indexPath)
         let balance = balances![indexPath.row];
         
-        // reformat the data for display uses
+        // re-format the data for display uses
         let dateFormatter = DateFormatter();
         dateFormatter.dateFormat = "dd/MM/YYYY";
                 
@@ -65,9 +65,9 @@ extension displayCategoryViewController: UITableViewDelegate, UITableViewDataSou
         
         // set background color based on type of data
         if balance.type == "Income" {
-            cell.contentView.backgroundColor = UIColor.systemTeal;
+            cell.contentView.backgroundColor = UIColor.systemGreen;
         } else {
-            cell.contentView.backgroundColor = UIColor.systemOrange;
+            cell.contentView.backgroundColor = UIColor.systemRed;
         }
         
         // return cell
@@ -82,20 +82,17 @@ extension displayCategoryViewController: UITableViewDelegate, UITableViewDataSou
         let action = UIContextualAction(style: .destructive, title: "Delete") {
             (action, view, completionHandler) in
             
-            // which data to delete
+            // determine the data to delete and remove the data
             let personToRemove = balances![indexPath.row];
-            
-            // remove the data
             self.context.delete(personToRemove);
             
-            // save the data
+            // save and re-fetch the data
             do {
                 try self.context.save();
             } catch {
-                
+                print("unable to delete data")
             }
             
-            // re-fetch the data
             self.fetchBalance();
         }
 

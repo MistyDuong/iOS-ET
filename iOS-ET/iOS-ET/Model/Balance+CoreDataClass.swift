@@ -32,8 +32,33 @@ public class Balance: NSManagedObject {
     }
     
     // fetch balance of specific user balance
-//    func fetchBalance(userName: String, category: String) -> NSFetchRequest<Balance> {
+//    func fetchBalanceCategory(_ userName: String, _ category: String) -> NSFetchRequest<Balance> {
+//        let request = Balance.fetchRequest() as NSFetchRequest<Balance>
+//
+//        // set the filtering
+//        let predicateUser = NSPredicate(format: "userName CONTAINS '\(userName)' ")
+//        let predicateCategory = NSPredicate(format: "type CONTAINS '\(category)' ")
+//
+//        request.predicate = predicateUser;
+//
+//        if category != "All" {
+//            request.predicate = predicateCategory;
+//        }
 //
 //        return request;
 //    }
+    
+    // retrieve user type (income.expense) from core data database
+    func fetchBalanceType(_ userName: String,_ type: String) -> NSFetchRequest<Balance> {
+        let request = Balance.fetchRequest() as NSFetchRequest<Balance>
+        
+        // set the filtering
+        let predicateUser = NSPredicate(format: "userName CONTAINS '\(userName)' ")
+        let predicateType = NSPredicate(format: "type CONTAINS '\(type)' ")
+        
+        // filter and return the filtered data
+        request.predicate = predicateUser;
+        request.predicate = predicateType;
+        return request;
+    }
 }

@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 class selectCategoryViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var allLabel: UILabel!
@@ -33,11 +32,12 @@ class selectCategoryViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad();
+        
         // hide nav bar
         self.navigationController?.isNavigationBarHidden = true;
-        print("select category - \(username)");
         
-//        calculateAmount();
+//        print("select category - \(username)");
+        
     }
     
 //    func calculateAmount(){
@@ -72,7 +72,6 @@ class selectCategoryViewController: UIViewController, UITextFieldDelegate {
 //    }
     
     @IBAction func allButton(_ sender: Any) {
-        
         selectedCategory = "All";
         
         // perform segue programmatically
@@ -97,7 +96,7 @@ class selectCategoryViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func transportButton(_ sender: UIButton) {
-        selectedCategory = "Transportation";
+        selectedCategory = "Transport";
         
         // perform segue programmatically
         // move to the dashboard when "sign in" button is clicked
