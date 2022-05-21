@@ -13,129 +13,93 @@ class displayCategoryViewController: UIViewController {
     @IBOutlet weak var detailTable: UITableView!
     @IBOutlet weak var titleLable: UILabel!
     
-    var amount: Double = 0.0
-    var acountName: String = " "
-    var selectedCategory: String = "";
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext;
+    var username: String = "hello"
     var categoryTitle: String = "Hello";
-    var balance:[Balance]?
-    let context=(UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext;
-
+    
+//    var amount: Double = 0.0
+//    var acountName: String = " "
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchBalance()
         
         // hide the nav bar
         self.navigationController?.isNavigationBarHidden = true;
-        
         titleLable.text = categoryTitle;
+        fetchBalance();
+        
+        print("display - \(username)")
     }
     
-    func fetchBalance(){
-        do{
+    func fetchBalance() {
+        do {
             let request = Balance.fetchRequest() as NSFetchRequest<Balance>
-            
-            /*if(selectedCategory == "All"){
-                let pred = NSPredicate(format: "category == 'All'")
-                request.predicate = pred
-            }*/
-            
-            if(selectedCategory == "Rent"){
-                let pred = NSPredicate(format: "category == 'Rent'")
-                request.predicate = pred
+            balances = try context.fetch(request);
+            DispatchQueue.main.async {
+                self.detailTable.reloadData();
             }
-            
-            else if(selectedCategory == "Groceries"){
-                let pred = NSPredicate(format: "category == 'Groceries'")
-                request.predicate = pred
+        } catch {
+                print("unable to retrieve data")
             }
-            
-            else if(selectedCategory == "Transport"){
-                let pred = NSPredicate(format: "category == 'Transport'")
-                request.predicate = pred
-            }
-            
-            else if(selectedCategory == "Utilities"){
-                let pred = NSPredicate(format: "category == 'Utilities'")
-                request.predicate = pred
-            }
-            
-            else if(selectedCategory == "Entertainment"){
-                let pred = NSPredicate(format: "category == 'Entertainment'")
-                request.predicate = pred
-            }
-
-            else if(selectedCategory == "Others"){
-                let pred = NSPredicate(format: "category == 'Others'")
-                request.predicate = pred
-            }
-            
-            let sort = NSSortDescriptor(key: "date", ascending: true)
-            request.sortDescriptors = [sort]
-            self.balance = try context.fetch(request)
-            
-        }catch{
-            
-        }
-        DispatchQueue.main.async {
-            
-        }
     }
 }
 
-extension displayCategoryViewController:UITableViewDelegate{
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-}
-
-extension displayCategoryViewController:UITableViewDataSource{
+extension displayCategoryViewController: UITableViewDelegate, UITableViewDataSource {
+    // return table rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // initiate row if there are not any
-        /*if(sortedHighScore.count == 0){
-            return(1)
-        }*/
-        return balance?.count ?? 1
+        return balances?.count ?? 0;
     }
-
-        
     
+    // display data into tableview
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell=tableView.dequeueReusableCell(withIdentifier: "displayExpense", for: indexPath)
-        //let score=highScore[indexPath.row]
-        // retrieves existed data and put in cell
-        /*if sortedHighScore.count != 0{
-            cell.textLabel?.text = "\(sortedHighScore[indexPath.row].key)"
-            cell.detailTextLabel?.text = "Score: \(sortedHighScore[indexPath.row].value)"
-
-        } else{
-            // no data scenerio
-            cell.textLabel?.text = "NO HIGH SCORE YET!"
-            cell.detailTextLabel?.text = ""
-        }*/
-        let detail = self.balance![indexPath.row]
-        cell.textLabel?.text=detail.title
-        cell.detailTextLabel?.text=String(detail.amount)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "displayExpense", for: indexPath)
+        let balance = balances![indexPath.row];
+        
+        // reformat the data for display uses
+        let dateFormatter = DateFormatter();
+        dateFormatter.dateFormat = "dd/MM/YYYY";
+                
+        // display data to corresponding cells
+        cell.textLabel?.text = String(balance.amount);
+        cell.detailTextLabel?.text = dateFormatter.string(from: balance.date!);
+        
+        // set background color based on type of data
+        if balance.type == "Income" {
+            cell.contentView.backgroundColor = UIColor.systemTeal;
+        } else {
+            cell.contentView.backgroundColor = UIColor.systemOrange;
+        }
+        
+        // return cell
         return cell
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
-        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+    // delete func
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+
+        // create swipe action
+        let action = UIContextualAction(style: .destructive, title: "Delete") {
+            (action, view, completionHandler) in
             
-            let balanceToRemove = self.balance![indexPath.row]
+            // which data to delete
+            let personToRemove = balances![indexPath.row];
             
-            self.context.delete(balanceToRemove)
+            // remove the data
+            self.context.delete(personToRemove);
             
+            // save the data
             do {
-                try self.context.save()
-            }
-            catch {
+                try self.context.save();
+            } catch {
                 
             }
             
-            self.fetchBalance()
+            // re-fetch the data
+            self.fetchBalance();
         }
-        
-        return UISwipeActionsConfiguration(actions: [action])
+
+        // return the swipe action
+        return UISwipeActionsConfiguration(actions: [action]);
     }
 }

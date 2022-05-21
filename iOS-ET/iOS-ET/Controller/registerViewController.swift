@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class registerViewController: UIViewController {
     @IBOutlet weak var firstNameTF: UITextField!
@@ -17,18 +18,26 @@ class registerViewController: UIViewController {
     @IBOutlet weak var expenseTF: UITextField!
     @IBOutlet weak var feedBackTF: UILabel!
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.navigationController?.isNavigationBarHidden = true;
     }
     
+    func fetchUser() {
+        // retrieve the data from core data
+        do {
+            users = try context.fetch(User.fetchRequest());
+        } catch {
+            print("unable to fetch user")
+        }
+    }
     
     @IBAction func createButton(_ sender: Any) {
-        // perform validation if it is empty
-        
+        // perform validation if it is empty, existing name and correct data type input
         if ((validateTF(firstNameTF.text ?? "") == false) || (validateTF(lastNameTF.text ?? "") == false) || (validateTF(userNameTF.text ?? "") == false) || (validateTF(pwdTF.text ?? "") == false) || (validateTF(incomeTF.text ?? "") == false) || (validateTF(expenseTF.text ?? "") == false)) {
-            
             feedBackTF.text = "provide all the required details";
         } else if (validateExistingName(userNameTF.text ?? "") == false) {
             feedBackTF.text = "username already existed";
@@ -37,7 +46,11 @@ class registerViewController: UIViewController {
             feedBackTF.text = "number field can't have string";
         }
         else {
-            // add registered to database
+            // add registered user data to database
+            // since the validations above ensure that all textfields will not be empty
+            // force unwrap can be used to resolve the optional variable
+            let newUser = User(context: self.context);
+            newUser.addUser(firstName: firstNameTF.text!, lastName: lastNameTF.text!, userName: userNameTF.text!, pwd: pwdTF.text!, monthlyIncome: Double(incomeTF.text!)!, spendingLimit: Double(expenseTF.text!)!)
             
             // perform segue programmatically
             // move to the dashboard when "sign in" button is clicked
@@ -55,13 +68,14 @@ class registerViewController: UIViewController {
     
     // validate func to check existing username
     func validateExistingName(_ username: String) -> Bool {
-        if username == "hello" {
+        let user = User(context: self.context);
+        if user.validateExisting(userNameTF.text!) == true {
             return false;
         }
         return true;
     }
     
-    // validate func to check that number field only consit number
+    // validate func to check that number field only consist number
     func validateInt(_ number: String) -> Bool {
         return number.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil;
     }
@@ -73,8 +87,7 @@ class registerViewController: UIViewController {
             // find the destination viewController - gameViewController
             if let destinationVC = segue.destination as?
                 dashboardViewController {
-                
-                
+                destinationVC.username = userNameTF.text!;
             }
         }
     }

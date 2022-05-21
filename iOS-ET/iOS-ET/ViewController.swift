@@ -7,19 +7,30 @@
 
 import UIKit
 
+var users:[User]?;
+
 class ViewController: UIViewController {
-    
     @IBOutlet weak var userNameTF: UITextField!
     @IBOutlet weak var pwdTF: UITextField!
     @IBOutlet weak var feedBackTF: UILabel!
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.navigationController?.isNavigationBarHidden = true;
         
-        // database
-//        var container:
+        // hide nav bar
+        self.navigationController?.isNavigationBarHidden = true;
+    }
+    
+    func fetchUser() {
+        // retrieve the data from core data
+        do {
+            users = try context.fetch(User.fetchRequest());
+        } catch {
+            print("unable to fetch data")
+        }
     }
     
     @IBAction func loginButton(_ sender: Any) {
@@ -27,17 +38,14 @@ class ViewController: UIViewController {
         if ((validateTF(userNameTF.text ?? "")) == false && (validateTF(pwdTF.text ?? "")) == false) {
             feedBackTF.textColor = UIColor.systemYellow;
             feedBackTF.text = "Enter username and password";
-            
-        } else if (validateLogin(username: userNameTF.text ?? "", pwd: pwdTF.text ?? "")) == false {
+        } else if validateLogin(username: userNameTF.text!, pwd: pwdTF.text!) == false {
             feedBackTF.textColor = UIColor.systemYellow;
             feedBackTF.text = "incorrect username or password";
-        }
-        else {
+        } else {
             // after validations are complete; perform segue programmatically
             // move to the dashboard when "sign in" button is clicked
             self.performSegue(withIdentifier: "loginToDashboard", sender: nil);
         }
-        
     }
     
     // validate func to check whether textfield are empty
@@ -50,10 +58,12 @@ class ViewController: UIViewController {
     
     // validate func to check login details
     func validateLogin(username: String, pwd: String) -> Bool {
-        if username != "hello" || pwd != "world" {
-            return false;
+        let user = User(context: self.context);
+        
+        if user.validateUser(username: userNameTF.text!, pwd: pwdTF.text!) == true {
+            return true;
         }
-        return true;
+        return false;
     }
     
     // function to pass data to the next screen
@@ -65,10 +75,8 @@ class ViewController: UIViewController {
                 dashboardViewController {
                 
                 destinationVC.username = userNameTF.text ?? "sample";
-                destinationVC.pwd = userNameTF.text ?? "sample";
             }
         }
     }
     
 }
-

@@ -7,75 +7,85 @@
 
 import Foundation
 import UIKit
-import CoreData
+
+var balances:[Balance]?
 
 class dashboardViewController: UIViewController {
-    
     var username: String = "sample";
-    var pwd: String = "sample";
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    var invoices:[Balance]?
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext;
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         self.navigationController?.isNavigationBarHidden = true;
-        fetchBalance()
-    }
-    func fetchBalance(){
-        do{
-            self.invoices = try context.fetch(Balance.fetchRequest())
-        }
-        catch{
-            
-        }
+        
+        print("dashboard - \(username)")
     }
     
     @IBAction func createButton(_ sender: Any) {
         // create alert
-        let alert = UIAlertController(title: "New Invoice", message: "Enter all required information ", preferredStyle: .alert)
-        alert.addTextField();
+        let alert = UIAlertController(title: "New Invoice", message: "Enter all required information", preferredStyle: .alert)
+//        alert
         alert.addTextField();
         alert.addTextField();
         alert.addTextField();
         
-        let titleTF = alert.textFields![0];
-        let typeTF = alert.textFields![1];
-        let amountTF = alert.textFields![2];
-        let categoryTF = alert.textFields![3];
-
-        titleTF.placeholder = "Enter Title";
+        // get the textfield
+        let typeTF = alert.textFields![0];
+        let amountTF = alert.textFields![1];
+        let categoryTF = alert.textFields![2];
+        
         typeTF.placeholder = "Income or Expense?";
         amountTF.placeholder = "Enter Amount";
         categoryTF.placeholder = "Which Category";
         
-        
         let addButton = UIAlertAction(title: "Create", style: .default) { (action) in
-            // action
-            let newInvoice = Balance(context: self.context)
-            let doubleAmount = Double(amountTF.text!)
-
-            newInvoice.title = titleTF.text
-            newInvoice.type = typeTF.text
-            newInvoice.amount = doubleAmount ?? 0.00
-            newInvoice.category = categoryTF.text
+            // create the invoice object
+            let newInvoice = Balance(context: self.context);
+            let amount = (amountTF.text! as NSString).floatValue;
             
-            do {
-                try self.context.save()
-            }
-            catch{
-                
-            }
+            newInvoice.createInvoice(username: self.username, type: typeTF.text ?? "", amount: Double(amount), category: categoryTF.text ?? "")
         }
-        self.fetchBalance()
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
         
         // add button
         alert.addAction(addButton);
+        alert.addAction(cancelButton);
         
         // show alert
         self.present(alert, animated: true, completion: nil);
     }
     
+    @IBAction func viewProfileButton(_ sender: Any) {
+        // perform segue programmatically
+        self.performSegue(withIdentifier: "goToProfile", sender: nil);
+    }
+    
+    @IBAction func viewCategory(_ sender: Any) {
+        // perform segue programmatically
+        self.performSegue(withIdentifier: "goToCategory", sender: nil);
+    }
+    
+    
+    // function to pass data to the next screen
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // check whether it is the right segue
+        if (segue.identifier == "goToProfile") {
+            // find the destination viewController - gameViewController
+            if let destinationVC = segue.destination as?
+                profileViewController {
+                
+                destinationVC.username = username;
+            }
+        } else if (segue.identifier == "goToCategory") {
+            // find the destination viewController - gameViewController
+            if let destinationVC = segue.destination as?
+                selectCategoryViewController {
+                destinationVC.username = username;
+            }
+        }
+    }
 
 }
