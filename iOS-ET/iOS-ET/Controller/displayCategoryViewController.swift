@@ -26,18 +26,25 @@ class displayCategoryViewController: UIViewController {
         // hide the nav bar
         self.navigationController?.isNavigationBarHidden = true;
         titleLable.text = categoryTitle;
-        self.fetchBalance();
+        self.display();
     }
     
     // fetch data from the database and display to table view
-    func fetchBalance() {
+    func display() {
         do {
-            let request = Balance.fetchRequest() as NSFetchRequest<Balance>
-            balances = try context.fetch(request);
+            /*let request = Balance.fetchRequest() as NSFetchRequest<Balance>
+            balances = try context.fetch(request);*/
+            let balance = Balance(context: self.context);
+            let request = balance.fetchBalanceCategory(username, categoryTitle)
+            
             
             // filter based on category
-            // action
+            let sort = NSSortDescriptor(key: "date", ascending: false)
+            request.sortDescriptors = [sort]
             
+            //action
+            balances = try context.fetch(request);
+
             // re-load the data to the table
             DispatchQueue.main.async {
                 self.detailTable.reloadData();
@@ -99,8 +106,8 @@ extension displayCategoryViewController: UITableViewDelegate, UITableViewDataSou
                 
             }
             
-            // re-fetch the data
-            self.fetchBalance();
+            // refresh the data
+            self.display();
         }
 
         // return the swipe action

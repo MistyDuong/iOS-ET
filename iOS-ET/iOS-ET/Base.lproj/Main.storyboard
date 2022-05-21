@@ -829,7 +829,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="klz-fR-YgG">
                                                 <rect key="frame" x="0.0" y="0.0" width="115" height="31"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="All"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="All">
+                                                    <color key="baseBackgroundColor" systemColor="secondaryLabelColor"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="allButton:" destination="NK0-xE-Gu5" eventType="touchUpInside" id="hYP-4o-pKl"/>
                                                 </connections>
@@ -837,7 +839,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8y-Dm-oUR">
                                                 <rect key="frame" x="0.0" y="71" width="115" height="31"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Rent"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Rent">
+                                                    <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="rentButton:" destination="NK0-xE-Gu5" eventType="touchUpInside" id="B17-8C-lEu"/>
                                                 </connections>
@@ -845,7 +849,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZZ-Gl-PAf">
                                                 <rect key="frame" x="0.0" y="142" width="115" height="31"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Groceries"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Groceries">
+                                                    <color key="baseBackgroundColor" systemColor="systemIndigoColor"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="groceriesButton:" destination="NK0-xE-Gu5" eventType="touchUpInside" id="xer-8x-1DS"/>
                                                 </connections>
@@ -853,7 +859,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3d-Gg-gYO">
                                                 <rect key="frame" x="0.0" y="213" width="115" height="31"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Transport"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Transport">
+                                                    <color key="baseBackgroundColor" systemColor="systemOrangeColor"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="transportButton:" destination="NK0-xE-Gu5" eventType="touchUpInside" id="gqo-77-wak"/>
                                                 </connections>
@@ -861,7 +869,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEc-JK-DKj">
                                                 <rect key="frame" x="0.0" y="284" width="115" height="31"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Utilities"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Utilities">
+                                                    <color key="baseBackgroundColor" systemColor="systemTealColor"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="utilitiesButton:" destination="NK0-xE-Gu5" eventType="touchUpInside" id="idq-mm-I9b"/>
                                                 </connections>
@@ -869,7 +879,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vxe-vK-fSh">
                                                 <rect key="frame" x="0.0" y="355" width="115" height="31"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Entertainment"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Entertainment">
+                                                    <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="entertainmentButton:" destination="NK0-xE-Gu5" eventType="touchUpInside" id="UAx-PV-Bkn"/>
                                                 </connections>
@@ -877,7 +889,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="66O-hh-Drc">
                                                 <rect key="frame" x="0.0" y="426" width="115" height="31"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Others"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Others">
+                                                    <color key="baseBackgroundColor" systemColor="systemBrownColor"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="othersButton:" destination="NK0-xE-Gu5" eventType="touchUpInside" id="9uR-KZ-YRM"/>
                                                 </connections>
@@ -1072,7 +1086,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="95n-78-zGt"/>
+        <segue reference="fKj-oR-wE1"/>
         <segue reference="w6R-So-8id"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -1096,14 +1110,32 @@
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -33,8 +33,8 @@ class dashboardViewController: UIViewController {
             let requestExpense = fetchBalance.fetchBalanceType(username, "Expense");
             let incomeResult = try context.fetch(requestIncome);
             let expenseResult = try context.fetch(requestExpense);
-            var totalIncome: Double = 20;
-            var totalExpense: Double = 10;
+            var totalIncome: Double = 0;
+            var totalExpense: Double = 0;
 
             // perform calculation for income
             for data in incomeResult as [NSManagedObject] {

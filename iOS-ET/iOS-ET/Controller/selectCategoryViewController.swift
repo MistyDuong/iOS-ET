@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class selectCategoryViewController: UIViewController, UITextFieldDelegate {
     
@@ -35,40 +36,78 @@ class selectCategoryViewController: UIViewController, UITextFieldDelegate {
         
         // hide navbar
         self.navigationController?.isNavigationBarHidden = true;
+        
+        calculateAmount()
     }
     
-//    func calculateAmount(){
-//        for item in balances!{
-//
-//            if(item.category=="Rent"){
-//                rentAmount+=item.amount
-//            }
-//            if(item.category=="Groceries"){
-//                groceriesAmount+=item.amount
-//            }
-//            if(item.category=="Transport"){
-//                transportAmount+=item.amount
-//            }
-//            if(item.category=="Utilities"){
-//                utilitiesAmount+=item.amount
-//            }
-//            if(item.category=="Entertainment"){
-//                entertainmentAmount+=item.amount
-//            }
-//            if(item.category=="Others"){
-//                othersAmount+=item.amount
-//            }
-//            allAmount+=item.amount
-//            rentLabel.text=String(rentAmount)
-//            groceriesLabel.text=String(groceriesAmount)
-//            transportLabel.text=String(transportAmount)
-//            utilitiesLabel.text=String(utilitiesAmount)
-//            entertainmentLabel.text=String(entertainmentAmount)
-//            othersLabel.text=String(othersAmount)
-//        }
-//    }
     
-    @IBAction func allButton(_ sender: Any) {
+    
+    func calculateAmount(){
+        do{
+        let balance = Balance(context: self.context);
+        let request = balance.fetchBalance(username)
+        let result = try context.fetch(request);
+
+        for item in result as [NSManagedObject]{
+            let itemCategory=item.value(forKey: "category") as? String
+            let itemType=item.value(forKey: "type") as? String
+            
+            if(itemCategory=="Rent"){
+                if(itemType=="Income"){
+                    rentAmount+=Double(item.value(forKey: "amount") as! NSNumber)
+                }else{
+                    rentAmount-=Double(item.value(forKey: "amount") as! NSNumber)
+                }
+            }else if(itemCategory=="Groceries"){
+                if(itemType=="Income"){
+                    groceriesAmount+=Double(item.value(forKey: "amount") as! NSNumber)
+                }else{
+                    groceriesAmount-=Double(item.value(forKey: "amount") as! NSNumber)
+                }
+            }else if(itemCategory=="Transport"){
+                if(itemType=="Income"){
+                    transportAmount+=Double(item.value(forKey: "amount") as! NSNumber)
+                }else{
+                    transportAmount-=Double(item.value(forKey: "amount") as! NSNumber)
+                }
+            }else if(itemCategory=="Utilities"){
+                if(itemType=="Income"){
+                    utilitiesAmount+=Double(item.value(forKey: "amount") as! NSNumber)
+                }else{
+                    utilitiesAmount-=Double(item.value(forKey: "amount") as! NSNumber)
+                }
+            }else if(itemCategory=="Entertainment"){
+                if(itemType=="Income"){
+                    entertainmentAmount+=Double(item.value(forKey: "amount") as! NSNumber)
+                }else{
+                    entertainmentAmount-=Double(item.value(forKey: "amount") as! NSNumber)
+                }
+            }else{
+                if(itemType=="Income"){
+                    othersAmount+=Double(item.value(forKey: "amount") as! NSNumber)
+                }else{
+                    othersAmount-=Double(item.value(forKey: "amount") as! NSNumber)
+                }
+            }
+            if(itemType=="Income"){
+                allAmount+=Double(item.value(forKey: "amount") as! NSNumber)
+            }else{
+                allAmount-=Double(item.value(forKey: "amount") as! NSNumber)
+            }
+        }
+            allLabel.text=String(allAmount) + "$"
+            rentLabel.text=String(rentAmount) + "$"
+            groceriesLabel.text=String(groceriesAmount) + "$"
+            transportLabel.text=String(transportAmount) + "$"
+            utilitiesLabel.text=String(utilitiesAmount) + "$"
+            entertainmentLabel.text=String(entertainmentAmount) + "$"
+            othersLabel.text=String(othersAmount) + "$"
+        }catch{
+            print("error")
+        }
+    }
+    
+    @IBAction func allButton(_ sender: UIButton) {
         selectedCategory = "All";
         
         // perform segue programmatically and move to "displaycategory"
@@ -96,28 +135,28 @@ class selectCategoryViewController: UIViewController, UITextFieldDelegate {
         self.performSegue(withIdentifier: "goTodisplayCategory", sender: nil);
     }
     
-    @IBAction func utilitiesButton(_ sender: Any) {
+    @IBAction func utilitiesButton(_ sender: UIButton) {
         selectedCategory = "Utilities";
         
         // perform segue programmatically and move to "displaycategory"
         self.performSegue(withIdentifier: "goTodisplayCategory", sender: nil);
     }
     
-    @IBAction func entertainmentButton(_ sender: Any) {
+    @IBAction func entertainmentButton(_ sender: UIButton) {
         selectedCategory = "Entertainment";
         
         // perform segue programmatically and move to "displaycategory"
         self.performSegue(withIdentifier: "goTodisplayCategory", sender: nil);
     }
     
-    @IBAction func othersButton(_ sender: Any) {
+    @IBAction func othersButton(_ sender: UIButton) {
         selectedCategory = "Others";
         
         // perform segue programmatically and move to "displaycategory"
         self.performSegue(withIdentifier: "goTodisplayCategory", sender: nil);
     }
     
-    @IBAction func backButton(_ sender: Any) {
+    @IBAction func backButton(_ sender: UIButton) {
         // perform segue programmatically and move to "dasboard"
         self.performSegue(withIdentifier: "returnToDash", sender: nil);
     }

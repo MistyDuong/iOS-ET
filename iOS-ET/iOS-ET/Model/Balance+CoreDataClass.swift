@@ -31,22 +31,31 @@ public class Balance: NSManagedObject {
         }
     }
     
+    // fetch all transaction of specific user
+    func fetchBalance(_ userName: String) -> NSFetchRequest<Balance>{
+            let request = Balance.fetchRequest() as NSFetchRequest<Balance>
+            let pred = NSPredicate(format: "userName CONTAINS '\(userName)'")
+            request.predicate = pred
+            return request
+    }
+    
     // fetch balance of specific user balance
-//    func fetchBalanceCategory(_ userName: String, _ category: String) -> NSFetchRequest<Balance> {
-//        let request = Balance.fetchRequest() as NSFetchRequest<Balance>
-//
-//        // set the filtering
-//        let predicateUser = NSPredicate(format: "userName CONTAINS '\(userName)' ")
-//        let predicateCategory = NSPredicate(format: "type CONTAINS '\(category)' ")
-//
-//        request.predicate = predicateUser;
-//
-//        if category != "All" {
-//            request.predicate = predicateCategory;
-//        }
-//
-//        return request;
-//    }
+    func fetchBalanceCategory(_ userName: String, _ category: String) -> NSFetchRequest<Balance> {
+          let request = Balance.fetchRequest() as NSFetchRequest<Balance>
+
+        // set the filtering
+        let predicateUser = NSPredicate(format: "userName CONTAINS '\(userName)' ")
+        var predicateCategory = NSPredicate(format: "category CONTAINS '\(category)' ")
+        if(category == "Others"){
+            predicateCategory = NSPredicate(format: "NOT category IN %@",["Rent","Groceries","Transport","Entertainment"])
+        }
+        request.predicate = predicateUser;
+
+        if category != "All" {
+            request.predicate = predicateCategory;
+        }
+        return request;
+    }
     
     // retrieve user type (income/expense) from core data database
     func fetchBalanceType(_ userName: String,_ type: String) -> NSFetchRequest<Balance> {
