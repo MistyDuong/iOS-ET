@@ -21,11 +21,12 @@ public class Balance: NSManagedObject {
         self.userName = username;
         self.type = type;
         self.amount = amount;
+//        self.category = category;
         
-        if (category != "Rent" || category != "Transport" || category != "Utilities" || category != "Others" || category != "Entertainment" || category != "Groceries") {
-            self.category = "Others";
-        } else {
+        if (category == "Rent" || category == "Transport" || category == "Utilities" || category == "Others" || category == "Entertainment" || category == "Groceries") {
             self.category = category;
+        } else {
+            self.category = "Others";
         }
         
         self.date = currentDate;
