@@ -1,8 +1,7 @@
 //
 //  dashboardViewController.swift
-//  iOS-ET
 //
-//  Created by Misty Duong on 15/5/22.
+//  @Copyright 2022 - iOS-ET created by iOS Group
 //
 
 import Foundation
@@ -118,7 +117,6 @@ class dashboardViewController: UIViewController {
         self.performSegue(withIdentifier: "goToCategory", sender: nil);
     }
     
-    
     // function to pass data to the next screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // check whether it is the right segue
@@ -136,9 +134,7 @@ class dashboardViewController: UIViewController {
             if let destinationVC = segue.destination as?
                 selectCategoryViewController {
                 destinationVC.username = username;
-//                destinationVC.allAmount = totalBalanceLabel.text ?? "0";
             }
         }
     }
-
 }

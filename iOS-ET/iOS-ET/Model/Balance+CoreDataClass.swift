@@ -1,9 +1,7 @@
 //
 //  Balance+CoreDataClass.swift
-//  iOS-ET
 //
-//  Created by Quy Dam on 18/5/2022.
-//
+//  @Copyright 2022 - iOS-ET created by iOS Group
 //
 
 import Foundation
@@ -12,17 +10,17 @@ import UIKit
 
 @objc(Balance)
 public class Balance: NSManagedObject {
-
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext;
     let currentDate = Date();
     
     // add function
     func createInvoice(username: String, type: String, amount: Double, category: String) {
         self.userName = username;
-        self.type = type;
+        self.type = type.lowercased();
         self.amount = amount;
-//        self.category = category;
         
+        // if the description is sepcific has listed then add the category with the input data
+        // esle save the category as "Others"
         if (category == "Rent" || category == "Transport" || category == "Utilities" || category == "Others" || category == "Entertainment" || category == "Groceries") {
             self.category = category;
         } else {

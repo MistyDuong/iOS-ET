@@ -1,8 +1,7 @@
 //
 //  ViewController.swift
-//  iOS-ET
 //
-//  Created by Misty Duong on 14/5/22.
+//  @Copyright 2022 - iOS-ET created by iOS Group
 //
 
 import UIKit
@@ -76,5 +75,4 @@ class ViewController: UIViewController {
             }
         }
     }
-    
 }

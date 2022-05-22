@@ -1,9 +1,7 @@
 //
 //  User+CoreDataClass.swift
-//  iOS-ET
 //
-//  Created by Quy Dam on 18/5/2022.
-//
+//  @Copyright 2022 - iOS-ET created by iOS Group
 //
 
 import Foundation

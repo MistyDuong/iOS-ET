@@ -1,8 +1,7 @@
 //
 //  registerViewController.swift
-//  iOS-ET
 //
-//  Created by Misty Duong on 14/5/22.
+//  @Copyright 2022 - iOS-ET created by iOS Group
 //
 
 import Foundation
@@ -25,15 +24,6 @@ class registerViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationController?.isNavigationBarHidden = true;
     }
-    
-    // retrieve the data from core data
-//    func fetchUser() {
-//        do {
-//            users = try context.fetch(User.fetchRequest());
-//        } catch {
-//            print("unable to fetch user")
-//        }
-//    }
     
     @IBAction func createButton(_ sender: Any) {
         // perform vatious validations including if textfields are empty, existing input username and correct data type input
@@ -93,5 +83,4 @@ class registerViewController: UIViewController {
             }
         }
     }
-
 }

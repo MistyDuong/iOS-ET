@@ -1,8 +1,7 @@
 //
 //  detailExpenseDisplayViewController.swift
-//  iOS-ET
 //
-//  Created by Quy Dam on 17/5/2022.
+//  @Copyright 2022 - iOS-ET created by iOS Group
 //
 
 import Foundation
@@ -29,13 +28,12 @@ class displayCategoryViewController: UIViewController {
     // fetch data from the database and display to table view
     func display() {
         do {
-            // called the fetchBalanceCategory() to filter data based on category and load the filtered data into the table
+            // called the fetchBalanceCategory() to filter data based on category and sort it based on "date" in descending order
+            // load the filtered and sorted data into the table
             let fetchBalance = Balance(context: self.context);
             let request = fetchBalance.fetchBalanceCategory(self.username, categoryTitle)
-            
             let sort = NSSortDescriptor(key: "date", ascending: false);
             request.sortDescriptors = [sort];
-            
             balances = try context.fetch(request);
             
             // re-load the data to the table
@@ -96,7 +94,7 @@ extension displayCategoryViewController: UITableViewDelegate, UITableViewDataSou
             do {
                 try self.context.save();
             } catch {
-                
+                print("unable to save data");
             }
             
             // re-fetch the data

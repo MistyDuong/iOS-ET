@@ -1,8 +1,7 @@
 //
 //  profileViewController.swift
-//  iOS-ET
 //
-//  Created by Misty Duong on 15/5/22.
+//  @Copyright 2022 - iOS-ET created by iOS Group
 //
 
 import Foundation
@@ -44,6 +43,7 @@ class profileViewController: UIViewController {
             let request = fetchUser.fetchUser(username)
             let result = try context.fetch(request);
             
+            // for-loop to display corresponding data to the UI
             for data in result as [NSManagedObject] {
                 let montlyIncome = data.value(forKey: "monthIncome") as! NSNumber;
                 let spendingLimit = data.value(forKey: "spendingLimit") as! NSNumber;
@@ -64,11 +64,12 @@ class profileViewController: UIViewController {
         let alert = UIAlertController(title: "Update Income", message: "New Monthly Income: ", preferredStyle: .alert)
         alert.addTextField();
         
+        // get the textfield and pass in existing data
         let incomeTF = alert.textFields![0];
         incomeTF.text = monthlyIncome.text;
         
+        // create button and call the update func then reload data display on screen
         let saveButton = UIAlertAction(title: "Save", style: .default) { (action) in
-            // call the update func and reload data display on screen
             let updateUser = User(context: self.context);
             updateUser.updateUser(username: self.username, data: incomeTF.text ?? "", type: "Income")
             self.viewDidLoad();
@@ -84,11 +85,12 @@ class profileViewController: UIViewController {
         let alert = UIAlertController(title: "Update Spending Limit", message: "New Spending Limit: ", preferredStyle: .alert)
         alert.addTextField();
         
+        // get the textfield and pass in existing data
         let limitTF = alert.textFields![0];
         limitTF.text = limitLabel.text;
         
+        // create button and call the update func then reload data display on screen
         let saveButton = UIAlertAction(title: "Save", style: .default) { (action) in
-            // action
             let updateUser = User(context: self.context);
             updateUser.updateUser(username: self.username, data: limitTF.text ?? "", type: "Spending")
             self.viewDidLoad();
@@ -103,12 +105,12 @@ class profileViewController: UIViewController {
         let alert = UIAlertController(title: "Update password", message: "New password: ", preferredStyle: .alert)
         alert.addTextField();
         
+        // get the textfield and pass in existing data
         let pwdTF = alert.textFields![0];
         pwdTF.text = pwdLabel.text;
         
-        // configure the handler
+        // create button and call the update func then reload data display on screen
         let saveButton = UIAlertAction(title: "Save", style: .default) { (action) in
-            // action
             let updateUser = User(context: self.context);
             updateUser.updateUser(username: self.username, data: pwdTF.text ?? "", type: "pwd")
             self.viewDidLoad();
@@ -135,5 +137,4 @@ class profileViewController: UIViewController {
             }
         }
     }
-    
 }
