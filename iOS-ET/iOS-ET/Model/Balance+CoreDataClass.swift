@@ -67,7 +67,7 @@ public class Balance: NSManagedObject {
             let categories = data.value(forKey: "category") as? String;
             let type = data.value(forKey: "type") as? String;
             
-            if user == username && categories == selectedCategory && type == "Income" {
+            if user == username && categories == selectedCategory && (type == "Income" || type == "income") {
                 let toCalculateIncome = data.value(forKey: "amount") as! Double;
                 result += toCalculateIncome;
             }
@@ -79,7 +79,7 @@ public class Balance: NSManagedObject {
             let categories = data.value(forKey: "category") as? String;
             let type = data.value(forKey: "type") as? String;
             
-            if user == username && categories == selectedCategory && type == "Expense" {
+            if user == username && categories == selectedCategory && (type == "Expense" || type == "expense") {
                 let toCalculateExpense = data.value(forKey: "amount") as! Double;
                 result -= toCalculateExpense;
             }
