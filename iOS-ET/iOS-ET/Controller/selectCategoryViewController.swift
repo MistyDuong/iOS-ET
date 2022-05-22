@@ -36,6 +36,7 @@ class selectCategoryViewController: UIViewController, UITextFieldDelegate {
             let fetchBalance = Balance(context: self.context);
             
             // filter out the category
+            let requestAll = fetchBalance.fetchBalanceCategory(self.username, "All");
             let requestRent = fetchBalance.fetchBalanceCategory(self.username, "Rent");
             let requestGroceries = fetchBalance.fetchBalanceCategory(self.username, "Groceries");
             let requestTransport = fetchBalance.fetchBalanceCategory(self.username, "Transport");
@@ -43,6 +44,7 @@ class selectCategoryViewController: UIViewController, UITextFieldDelegate {
             let requestEntertainment = fetchBalance.fetchBalanceCategory(self.username, "Entertainment");
             let requestOthers = fetchBalance.fetchBalanceCategory(self.username, "Others");
             
+            let filteredAll = try context.fetch(requestAll);
             let filteredRent = try context.fetch(requestRent);
             let filteredGroceries = try context.fetch(requestGroceries);
             let filteredTransport = try context.fetch(requestTransport);
@@ -51,24 +53,25 @@ class selectCategoryViewController: UIViewController, UITextFieldDelegate {
             let filteredOthers = try context.fetch(requestOthers);
             
             // call the calculateAmount() to perform calculation then pass the data onto screen
-            allLabel.text = allAmount+"$";
-            rentLabel.text = String(fetchBalance.calculateAmount(self.username, filteredRent, "Rent"))+"$";
-            groceriesLabel.text = String(fetchBalance.calculateAmount(self.username, filteredGroceries, "Groceries"))+"$";
-            transportLabel.text = String(fetchBalance.calculateAmount(self.username, filteredTransport, "Transport"))+"$";
-            utilitiesLabel.text = String(fetchBalance.calculateAmount(self.username, filteredUtilities, "Utilities"))+"$";
-            entertainmentLabel.text = String(fetchBalance.calculateAmount(self.username, filteredEntertainment, "Entertainment"))+"$";
-            othersLabel.text = String(fetchBalance.calculateAmount(self.username, filteredOthers, "Others"))+"$";
+//            allLabel.text = allAmount;
+            allLabel.text = "$ " + String(fetchBalance.calculateAmount(self.username, filteredAll, "All"));
+            rentLabel.text = "$ " + String(fetchBalance.calculateAmount(self.username, filteredRent, "Rent"));
+            groceriesLabel.text = "$ " + String(fetchBalance.calculateAmount(self.username, filteredGroceries, "Groceries"));
+            transportLabel.text = "$ " + String(fetchBalance.calculateAmount(self.username, filteredTransport, "Transport"));
+            utilitiesLabel.text = "$ " + String(fetchBalance.calculateAmount(self.username, filteredUtilities, "Utilities"));
+            entertainmentLabel.text = "$ " + String(fetchBalance.calculateAmount(self.username, filteredEntertainment, "Entertainment"))+"$";
+            othersLabel.text = "$ " + String(fetchBalance.calculateAmount(self.username, filteredOthers, "Others"));
         }
         catch {
             print("unable to calculate")
         }
     }
     
-    @IBAction func refreshButton(_ sender: UIButton) {
+    @IBAction func refreshButton(_ sender: Any) {
         self.viewDidLoad();
     }
     
-    @IBAction func allButton(_ sender: UIButton) {
+    @IBAction func allButton(_ sender: Any) {
         selectedCategory = "All";
         
         // perform segue programmatically and move to "displaycategory"
@@ -96,28 +99,28 @@ class selectCategoryViewController: UIViewController, UITextFieldDelegate {
         self.performSegue(withIdentifier: "goTodisplayCategory", sender: nil);
     }
     
-    @IBAction func utilitiesButton(_ sender: UIButton) {
+    @IBAction func utilitiesButton(_ sender: Any) {
         selectedCategory = "Utilities";
         
         // perform segue programmatically and move to "displaycategory"
         self.performSegue(withIdentifier: "goTodisplayCategory", sender: nil);
     }
     
-    @IBAction func entertainmentButton(_ sender: UIButton) {
+    @IBAction func entertainmentButton(_ sender: Any) {
         selectedCategory = "Entertainment";
         
         // perform segue programmatically and move to "displaycategory"
         self.performSegue(withIdentifier: "goTodisplayCategory", sender: nil);
     }
     
-    @IBAction func othersButton(_ sender: UIButton) {
+    @IBAction func othersButton(_ sender: Any) {
         selectedCategory = "Others";
         
         // perform segue programmatically and move to "displaycategory"
         self.performSegue(withIdentifier: "goTodisplayCategory", sender: nil);
     }
     
-    @IBAction func backButton(_ sender: UIButton) {
+    @IBAction func backButton(_ sender: Any) {
         // perform segue programmatically and move to "dasboard"
         self.performSegue(withIdentifier: "returnToDash", sender: nil);
     }

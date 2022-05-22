@@ -68,7 +68,7 @@ extension displayCategoryViewController: UITableViewDelegate, UITableViewDataSou
         cell.detailTextLabel?.text = dateFormatter.string(from: balance.date!);
         
         // set background color based on income or expenses
-        if balance.type == "Income" {
+        if balance.type == "income" {
             cell.contentView.backgroundColor = UIColor.systemTeal;
         } else {
             cell.contentView.backgroundColor = UIColor.systemRed;

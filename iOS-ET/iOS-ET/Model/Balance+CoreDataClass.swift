@@ -61,13 +61,40 @@ public class Balance: NSManagedObject {
     func calculateAmount(_ username: String, _ filteredCategory: [Balance], _ selectedCategory: String) -> Double {
         var result: Double = 0;
         
+        // if the selectedCategory == "All"
+        // calculate without filter without choosing the category
+        // for-loop to calculate all user's income and expense
+        if selectedCategory == "All" {
+            for data in filteredCategory as [NSManagedObject] {
+                let user = data.value(forKey: "userName") as? String;
+                let type = data.value(forKey: "type") as? String;
+                
+                if user == username && type == "income" {
+                    let toCalculateIncome = data.value(forKey: "amount") as! Double;
+                    result += toCalculateIncome;
+                }
+            }
+            
+            for data in filteredCategory as [NSManagedObject] {
+                let user = data.value(forKey: "userName") as? String;
+                let type = data.value(forKey: "type") as? String;
+                
+                if user == username && type == "expense" {
+                    let toCalculateExpense = data.value(forKey: "amount") as! Double;
+                    result -= toCalculateExpense;
+                }
+            }
+            return result;
+        }
+        
+        // else calculate based on selected category
         // for-loop to calculate the all the income of the selected category
         for data in filteredCategory as [NSManagedObject] {
             let user = data.value(forKey: "userName") as? String;
             let categories = data.value(forKey: "category") as? String;
             let type = data.value(forKey: "type") as? String;
             
-            if user == username && categories == selectedCategory && (type == "Income" || type == "income") {
+            if user == username && categories == selectedCategory && type == "income" {
                 let toCalculateIncome = data.value(forKey: "amount") as! Double;
                 result += toCalculateIncome;
             }
@@ -79,7 +106,7 @@ public class Balance: NSManagedObject {
             let categories = data.value(forKey: "category") as? String;
             let type = data.value(forKey: "type") as? String;
             
-            if user == username && categories == selectedCategory && (type == "Expense" || type == "expense") {
+            if user == username && categories == selectedCategory && type == "expense" {
                 let toCalculateExpense = data.value(forKey: "amount") as! Double;
                 result -= toCalculateExpense;
             }
@@ -94,7 +121,7 @@ public class Balance: NSManagedObject {
         
         // set the filtering
         let predicateUser = NSPredicate(format: "userName CONTAINS '\(userName)' ")
-        let predicateType = NSPredicate(format: "type CONTAINS '\(type)' ")
+        let predicateType = NSPredicate(format: "type CONTAINS '\(type.lowercased())' ")
         
         // filter and return the filtered data
         request.predicate = predicateUser;

@@ -41,7 +41,7 @@ class dashboardViewController: UIViewController {
                 let user = data.value(forKey: "userName") as? String;
                 let type = data.value(forKey: "type") as? String;
                 
-                if user == self.username && type == "Income" {
+                if user == self.username && type == "income" {
                     // convert the data for calculation
                     // then display the result onto screen
                     let toCalculateIncome = data.value(forKey: "amount") as! Double;
@@ -55,7 +55,7 @@ class dashboardViewController: UIViewController {
                 let user = data.value(forKey: "userName") as? String;
                 let type = data.value(forKey: "type") as? String;
                 
-                if user == self.username && type == "Expense" {
+                if user == self.username && type == "expense" {
                     // convert the data for calculation
                     // then display the result onto screen
                     let toCalculateExpense = data.value(forKey: "amount") as! Double;
@@ -136,7 +136,7 @@ class dashboardViewController: UIViewController {
             if let destinationVC = segue.destination as?
                 selectCategoryViewController {
                 destinationVC.username = username;
-                destinationVC.allAmount = totalBalanceLabel.text ?? "0";
+//                destinationVC.allAmount = totalBalanceLabel.text ?? "0";
             }
         }
     }
