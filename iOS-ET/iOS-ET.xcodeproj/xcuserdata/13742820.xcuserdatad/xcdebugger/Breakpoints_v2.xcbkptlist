@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "D25B0882-FF87-425F-ABB6-674A02141E72"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6C09D8EC-0D20-45F6-9E5E-FC4AC270A0C2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOS-ET/Controller/displayCategoryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "displayCategoryViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "6C09D8EC-0D20-45F6-9E5E-FC4AC270A0C2 - 74a8e8a52e844968"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iOS_ET.displayCategoryViewController.username.getter : Swift.String"
+                  moduleName = "iOS-ET"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/13742820/Documents/iOS-ET/iOS-ET/iOS-ET/Controller/displayCategoryViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "103">
+               </Location>
+               <Location
+                  uuid = "6C09D8EC-0D20-45F6-9E5E-FC4AC270A0C2 - 65ce2d506e5438d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iOS_ET.displayCategoryViewController.username.setter : Swift.String"
+                  moduleName = "iOS-ET"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/13742820/Documents/iOS-ET/iOS-ET/iOS-ET/Controller/displayCategoryViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "139">
+               </Location>
+               <Location
+                  uuid = "6C09D8EC-0D20-45F6-9E5E-FC4AC270A0C2 - e78e16c4e1ff2b3c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iOS_ET.displayCategoryViewController.username.modify : Swift.String"
+                  moduleName = "iOS-ET"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/13742820/Documents/iOS-ET/iOS-ET/iOS-ET/Controller/displayCategoryViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  uuid = "6C09D8EC-0D20-45F6-9E5E-FC4AC270A0C2 - 5084401a3d77e3d2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iOS_ET.displayCategoryViewController.username.modify : Swift.String with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "iOS-ET"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/13742820/Documents/iOS-ET/iOS-ET/iOS-ET/Controller/displayCategoryViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "15">
+               </Location>
+               <Location
+                  uuid = "6C09D8EC-0D20-45F6-9E5E-FC4AC270A0C2 - 2f0a28f96cdc4be3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iOS_ET.displayCategoryViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; iOS_ET.displayCategoryViewController"
+                  moduleName = "iOS-ET"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/13742820/Documents/iOS-ET/iOS-ET/iOS-ET/Controller/displayCategoryViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "519">
+               </Location>
+               <Location
+                  uuid = "6C09D8EC-0D20-45F6-9E5E-FC4AC270A0C2 - 936a32afec7db8c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iOS_ET.displayCategoryViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;iOS_ET.displayCategoryViewController&gt;"
+                  moduleName = "iOS-ET"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/13742820/Documents/iOS-ET/iOS-ET/iOS-ET/Controller/displayCategoryViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "473">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FD2774C9-446B-4862-BECA-EE6F2D3CC78C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOS-ET/Model/Balance+CoreDataClass.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "fetchBalanceCategory(_:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C5998885-61CF-4FA3-BA26-2F090FB5E3F5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOS-ET/Controller/selectCategoryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
